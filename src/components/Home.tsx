@@ -7,10 +7,15 @@ interface Token {
 interface Artist {
   id: string,
 }
+interface Tracks {
+  name: string
+}
 
 export const Home = () => {
   const [publicToken, setPublicToken] = useState<Token>({access_token: ''}); 
   const [artist, setArtist] = useState<Artist>({id: ''});
+  const [tracks, setTracks] = useState<Tracks[]>([])
+  
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const clientId = process.env.REACT_APP_CLIENT_ID;
 
@@ -36,11 +41,24 @@ export const Home = () => {
     });
 
     const data = await result.json();
-    console.log(data.artists.items[0])
     if(data.artists.items[0]) {
-      setArtist(artist.id = data.artists.items[0].id)
+      setArtist(data.artists.items[0].id)
     }
   }
+
+  const getTopSongs = async() => {
+    console.log(artist)
+    const url = `https://api.spotify.com/v1/artists/${artist}/top-tracks?country=BR`    
+    const result = await fetch(url, {
+      method: 'GET',
+      headers: { 'Authorization' : 'Bearer ' + publicToken.access_token}      
+    });
+
+    const data = await result.json();
+    setTracks(data.tracks);
+  }
+
+  console.log(tracks)
 
   return (
     <div className='home-container'>
@@ -54,14 +72,33 @@ export const Home = () => {
         <button onClick={getArtist}>
           Get Artist
         </button>
-        {publicToken ? (
-          <div>
-            {publicToken.access_token}
-          </div>
-        ) : (
-          <>
-          </>
-        )}
+        <button onClick={getTopSongs}>
+          Get to songs
+        </button>
+        <div>
+          {publicToken ? (
+            <div>
+              {publicToken.access_token}
+            </div>
+          ) : (
+            <>
+            </>
+          )}
+        </div>
+        <div>
+          {tracks? (
+            tracks.map((track) => {
+              return (
+                <p key={track.name}>
+                  {track.name}
+                </p>
+              )
+            })
+          ) : (
+            <>
+            </>
+          )}          
+        </div>
       </div>
     </div>
   )

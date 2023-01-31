@@ -2,4 +2,5 @@
   display: flex;
   height: max-content;
   width: max-content;
+  flex-direction: column;
 }
