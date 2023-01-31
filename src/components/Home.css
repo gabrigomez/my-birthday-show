@@ -1,0 +1,5 @@
+.home-container {
+  display: flex;
+  height: max-content;
+  width: max-content;
+}
