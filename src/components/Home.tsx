@@ -16,11 +16,13 @@ export const Home = () => {
   const [artist, setArtist] = useState<Artist>({id: ''});
   const [tracks, setTracks] = useState<Tracks[]>([]);
   const [userToken] = useState(localStorage.getItem("token"));
+
+  const [userTracks, setUserTracks] = useState<Tracks[]>([])
   
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const clientId = process.env.REACT_APP_CLIENT_ID;
   
-  const authEndpoint = 'https://accounts.spotify.com/authorize';
+  const authEndpoint = 'https://accounts.spotify.com/en/authorize';
   const redirectUri = 'http://localhost:3000';
   const responseType = 'token';
 
@@ -67,7 +69,6 @@ export const Home = () => {
   }
 
   const getTopSongs = async() => {
-    console.log(artist)
     const url = `https://api.spotify.com/v1/artists/${artist}/top-tracks?country=BR`    
     const result = await fetch(url, {
       method: 'GET',
@@ -76,6 +77,20 @@ export const Home = () => {
 
     const data = await result.json();
     setTracks(data.tracks);
+  }
+
+  const getUserTracks = async() => {
+    const url = 'https://api.spotify.com/v1/me/top/tracks'
+
+    const result = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization' : 'Bearer ' + userToken,
+      }
+    });
+
+    const data = await result.json();
+    setUserTracks(data.items);    
   }
 
   return (
@@ -93,8 +108,13 @@ export const Home = () => {
         <button onClick={getTopSongs}>
           Get to songs
         </button>
-        {!userToken && (
-          <a href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`}>
+        {userToken && (
+          <button onClick={getUserTracks}>
+            Get my top tracks!
+          </button>
+        )}
+        {userToken && (
+          <a href={`${authEndpoint}?response_type=token&redirect_uri=${redirectUri}&client_id=${clientId}&scope=user-top-read&state=96r77`}>
             Login to Spotify
           </a>
         )}
@@ -115,6 +135,17 @@ export const Home = () => {
               )
             })
           )}          
+        </div>
+        <div>
+        {userTracks && (
+          userTracks.map((track) => {
+            return (
+              <p key={track.name}>
+                {track.name}
+              </p>
+              )
+            })
+        )}          
         </div>
       </div>
     </div>
