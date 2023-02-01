@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Home.css';
 
 interface Token {
@@ -14,10 +14,30 @@ interface Tracks {
 export const Home = () => {
   const [publicToken, setPublicToken] = useState<Token>({access_token: ''}); 
   const [artist, setArtist] = useState<Artist>({id: ''});
-  const [tracks, setTracks] = useState<Tracks[]>([])
+  const [tracks, setTracks] = useState<Tracks[]>([]);
+  const [userToken] = useState(localStorage.getItem("token"));
   
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const clientId = process.env.REACT_APP_CLIENT_ID;
+  
+  const authEndpoint = 'https://accounts.spotify.com/authorize';
+  const redirectUri = 'http://localhost:3000';
+  const responseType = 'token';
+
+  useEffect(() => {
+    const hash = window.location.hash 
+    let token = localStorage.getItem("token")
+
+    if (!token && hash) {
+      const tokenHash = hash.substring(1).split("&").find(elem => elem.startsWith("access_token"))?.split("=")[1];
+      window.location.hash = "";
+      
+      if(tokenHash) {
+        localStorage.setItem("token", tokenHash);
+      }
+    };
+
+  }, []);
 
   const getAccessToken = async() => {      
     const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -58,8 +78,6 @@ export const Home = () => {
     setTracks(data.tracks);
   }
 
-  console.log(tracks)
-
   return (
     <div className='home-container'>
       <h1>
@@ -75,18 +93,20 @@ export const Home = () => {
         <button onClick={getTopSongs}>
           Get to songs
         </button>
+        {!userToken && (
+          <a href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`}>
+            Login to Spotify
+          </a>
+        )}
         <div>
-          {publicToken ? (
+          {publicToken && (
             <div>
               {publicToken.access_token}
             </div>
-          ) : (
-            <>
-            </>
           )}
         </div>
         <div>
-          {tracks? (
+          {tracks && (
             tracks.map((track) => {
               return (
                 <p key={track.name}>
@@ -94,9 +114,6 @@ export const Home = () => {
                 </p>
               )
             })
-          ) : (
-            <>
-            </>
           )}          
         </div>
       </div>
