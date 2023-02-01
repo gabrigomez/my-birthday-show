@@ -1,15 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Artist, Token, Tracks } from '../interfaces';
 import './Home.css';
-
-interface Token {
-  access_token: string;
-}
-interface Artist {
-  id: string,
-}
-interface Tracks {
-  name: string
-}
 
 export const Home = () => {
   const [publicToken, setPublicToken] = useState<Token>({access_token: ''}); 
