@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 export const Home = () => {
@@ -9,6 +10,9 @@ export const Home = () => {
   const redirectUri = 'http://localhost:3000/';
 
   const authorizationCode = window.btoa(`${clientId}:${clientSecret}`);
+  const haveToken = Object.keys(userToken).length > 0 ? true : false;
+
+  const navigate = useNavigate()
   
   useEffect(() => {
     const href = window.location.href
@@ -34,16 +38,32 @@ export const Home = () => {
     
         if(response.ok) {
           const token = await response.json();    
-          setUserToken(token);
+          setUserToken(token.access_token);
+          navigate('/')
         };    
       };
 
       getToken(code);     
     };
-    
-  }, [authorizationCode]);
 
-  console.log(userToken)
+    if(haveToken) {
+      const getTopTracks = async () => {
+        const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
+    
+        const response = await fetch(TOP_TRACKS_ENDPOINT, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
+    
+        const tracks = await response.json();
+        console.log(tracks);  
+      };
+      getTopTracks()
+    }
+    
+  }, [authorizationCode, navigate, userToken, haveToken]);
 
   return (
     <div className='home-container'>
@@ -51,7 +71,7 @@ export const Home = () => {
         HOME
       </h1>
       <div>
-        {userToken && (
+        {!haveToken && (
           <a href={`${authEndpoint}?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=user-read-currently-playing%20user-top-read`}>
             Login to Spotify
           </a>
