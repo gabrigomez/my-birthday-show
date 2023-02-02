@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../features/userSlice';
 import { RootState } from '../store';
 import { AUTH_FULL_ENDPOINT, REDIRECT_URI, TOKEN_ENDPOINT } from '../utils/endpoints';
-import './Home.css';
 
 export const Home = () => {
   const clientId = process.env.REACT_APP_CLIENT_ID;  
@@ -44,7 +43,7 @@ export const Home = () => {
           navigate('/birthday-festival');
         };    
       };
-      
+
       getToken(code);     
     };
    
