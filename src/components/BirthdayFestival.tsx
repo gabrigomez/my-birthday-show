@@ -11,7 +11,7 @@ export const BirthdayFestival = () => {
   const dispacth = useDispatch();
   
   useEffect(() => {
-    if(haveAccess) {
+    if(haveAccess && tracks.length < 20) {
       const getTopTracks = async () => {    
         const response = await fetch(TOP_TRACKS_SHORT, {
           method: 'GET',
@@ -28,18 +28,29 @@ export const BirthdayFestival = () => {
   }, [token, haveAccess, dispacth]);
 
   return (
-    <div>
-      <h1>My Birthday Festival</h1>
-      <div>
-        {tracks && (
-          tracks.map((track) => {
-            return (
-              <ul key={track.name}>
-                {track.name}
-              </ul>
-            )
-          })
-        )}
+    <div className='flex flex-col mt-10 items-center'>
+      <div className='px-4 bg-slate-200'>
+        <div className='my-4'>
+          <h1 className='text-5xl'>
+            My Birthday Festival
+          </h1>
+        </div>
+        <div>
+          {tracks && (
+            tracks.map((track) => {
+              return (
+                <div className='flex flex-col items-center'>
+                  <ul key={track.name}>
+                    {track.name}
+                  </ul>
+                </div>
+              )
+            })
+          )}
+          <div className='flex justify-center text-xl mt-4'>
+            2023
+          </div>
+        </div>
       </div>
     </div>
   )
