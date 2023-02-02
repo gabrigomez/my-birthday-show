@@ -50,10 +50,13 @@ export const Home = () => {
   }, [authorizationCode, token, haveAccess, navigate, dispacth]);
 
   return (
-    <div className='home-container'>
-      <h1>
-        HOME
-      </h1>
+    <div className='flex flex-col items-center'>
+      <div>
+        <h1 className='text-5xl'>
+          My Birthday Festival
+        </h1>
+        <h3>E se sua festa de aniversário fosse um festival?</h3>
+      </div>
       <div>
         {!haveAccess && (
           <a href={AUTH_FULL_ENDPOINT}>
