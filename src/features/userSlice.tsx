@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { Tracks } from '../interfaces';
+import { Tracks } from '../utils/interfaces';
 
 export interface UserState {
   token: string,

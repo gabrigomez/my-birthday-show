@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../features/userSlice';
 import { RootState } from '../store';
+import { AUTH_FULL_ENDPOINT, REDIRECT_URI, TOKEN_ENDPOINT } from '../utils/endpoints';
 import './Home.css';
 
 export const Home = () => {
   const clientId = process.env.REACT_APP_CLIENT_ID;  
-  const clientSecret = process.env.REACT_APP_CLIENT_SECRET
-  const authEndpoint = 'https://accounts.spotify.com/en/authorize';
-  const redirectUri = 'http://localhost:3000/';
+  const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const authorizationCode = window.btoa(`${clientId}:${clientSecret}`);
 
   const token  = useSelector((state: RootState) => state.user.token);
@@ -30,10 +29,10 @@ export const Home = () => {
     
         const data = new URLSearchParams();
         data.append('code', code);
-        data.append('redirect_uri', redirectUri)
+        data.append('redirect_uri', REDIRECT_URI)
         data.append('grant_type', 'authorization_code');
     
-        const response = await fetch('https://accounts.spotify.com/api/token', {
+        const response = await fetch(TOKEN_ENDPOINT, {
           headers,
           method: 'POST',
           body: data,
@@ -45,7 +44,7 @@ export const Home = () => {
           navigate('/birthday-festival');
         };    
       };
-
+      
       getToken(code);     
     };
    
@@ -58,7 +57,7 @@ export const Home = () => {
       </h1>
       <div>
         {!haveAccess && (
-          <a href={`${authEndpoint}?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=user-read-currently-playing%20user-top-read`}>
+          <a href={AUTH_FULL_ENDPOINT}>
             Login to Spotify
           </a>
         )}      
