@@ -10,17 +10,15 @@ export const Home = () => {
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET
   const authEndpoint = 'https://accounts.spotify.com/en/authorize';
   const redirectUri = 'http://localhost:3000/';
-
-  const token  = useSelector((state: RootState) => state.user.token);
-  const haveAccess = useSelector((state: RootState) => state.user.haveAccess)
-
   const authorizationCode = window.btoa(`${clientId}:${clientSecret}`);
 
+  const token  = useSelector((state: RootState) => state.user.token);
+  const haveAccess = useSelector((state: RootState) => state.user.haveAccess);
   const navigate = useNavigate();
   const dispacth = useDispatch();
   
   useEffect(() => {
-    const href = window.location.href
+    const href = window.location.href;
     const code = href.substring(1)?.split("=")[1];
 
     if(code) {
