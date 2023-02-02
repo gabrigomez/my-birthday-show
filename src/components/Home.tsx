@@ -1,18 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../features/userSlice';
+import { RootState } from '../store';
 import './Home.css';
 
 export const Home = () => {
-  const [userToken, setUserToken] = useState<Object>({});
   const clientId = process.env.REACT_APP_CLIENT_ID;  
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET
   const authEndpoint = 'https://accounts.spotify.com/en/authorize';
   const redirectUri = 'http://localhost:3000/';
 
-  const authorizationCode = window.btoa(`${clientId}:${clientSecret}`);
-  const haveToken = Object.keys(userToken).length > 0 ? true : false;
+  const token  = useSelector((state: RootState) => state.user.token);
+  const haveAccess = useSelector((state: RootState) => state.user.haveAccess)
 
-  const navigate = useNavigate()
+  const authorizationCode = window.btoa(`${clientId}:${clientSecret}`);
+
+  const navigate = useNavigate();
+  const dispacth = useDispatch();
   
   useEffect(() => {
     const href = window.location.href
@@ -38,32 +43,15 @@ export const Home = () => {
     
         if(response.ok) {
           const token = await response.json();    
-          setUserToken(token.access_token);
-          navigate('/')
+          dispacth(login(token.access_token));
+          navigate('/birthday-festival');
         };    
       };
 
       getToken(code);     
     };
-
-    if(haveToken) {
-      const getTopTracks = async () => {
-        const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
-    
-        const response = await fetch(TOP_TRACKS_ENDPOINT, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        })
-    
-        const tracks = await response.json();
-        console.log(tracks);  
-      };
-      getTopTracks()
-    }
-    
-  }, [authorizationCode, navigate, userToken, haveToken]);
+   
+  }, [authorizationCode, token, haveAccess, navigate, dispacth]);
 
   return (
     <div className='home-container'>
@@ -71,7 +59,7 @@ export const Home = () => {
         HOME
       </h1>
       <div>
-        {!haveToken && (
+        {!haveAccess && (
           <a href={`${authEndpoint}?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=user-read-currently-playing%20user-top-read`}>
             Login to Spotify
           </a>
