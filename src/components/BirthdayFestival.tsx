@@ -9,9 +9,17 @@ export const BirthdayFestival = () => {
   const haveAccess = useSelector((state: RootState) => state.user.token);
   const tracks = useSelector((state: RootState) => state.user.tracks);
   const dispacth = useDispatch();
-  
+
+  function getRandomIndex(min: number = 0, max: number = 12) {
+    return Math.floor (Math.random() * (max - min) + min);
+  };
+
+  function conditionalClasses (index: number) {
+    return index === getRandomIndex() ? 'text-4xl' :  'text-xl'    
+  }
+ 
   useEffect(() => {
-    if(haveAccess && tracks.length < 20) {
+    if(haveAccess && tracks.length < 13) {
       const getTopTracks = async () => {    
         const response = await fetch(TOP_TRACKS_SHORT, {
           method: 'GET',
@@ -26,6 +34,7 @@ export const BirthdayFestival = () => {
       getTopTracks()
     };    
   }, [token, haveAccess, dispacth]);
+  console.log(tracks)
 
   return (
     <div className='flex flex-col mt-10 items-center'>
@@ -37,12 +46,17 @@ export const BirthdayFestival = () => {
         </div>
         <div>
           {tracks && (
-            tracks.map((track) => {
+            tracks.map((track, index) => {
               return (
                 <div className='flex flex-col items-center'>
-                  <ul key={track.name}>
-                    {track.name}
-                  </ul>
+                  <div 
+                    className={`${conditionalClasses(index)} ${conditionalClasses(index)}`} 
+                    key={track.name}>
+                      {track.name}
+                  </div>
+                  <div className='text-xs'>
+                    {track.artists[0].name}
+                  </div>
                 </div>
               )
             })
