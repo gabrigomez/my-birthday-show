@@ -38,7 +38,7 @@ export const BirthdayFestival = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='px-4 bg-slate-200'>
+      <div className='px-4 bg-paper'>
         <div className='flex flex-col items-center my-4'>
           <h1 className='text-4xl font-rock-salty text-red-600'>
             My Birthday Festival
@@ -48,11 +48,11 @@ export const BirthdayFestival = () => {
           {tracks && (
             tracks.map((track, index) => {
               return (
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center mb-2'>
                   <div 
                     className={`${conditionalClasses(index)} font-unbounded`} 
                     key={track.name}>
-                      {track.name}
+                      {track.name.toUpperCase()}
                   </div>
                   <div className='text-xs'>
                     {track.artists[0].name}
@@ -61,7 +61,7 @@ export const BirthdayFestival = () => {
               )
             })
           )}
-          <div className='flex justify-center text-xl mt-4'>
+          <div className='flex justify-center text-lg mt-3'>
             2023
           </div>
         </div>

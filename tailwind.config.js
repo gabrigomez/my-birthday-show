@@ -9,6 +9,9 @@ module.exports = {
         'rock-salty': ['Rock Salt', 'cursive'],
         'unbounded': ['Unbounded', 'cursive']
       },
+      backgroundImage: {
+        'paper': "url('./assets/paper.png')",
+      },
     },
   },
   plugins: [],
