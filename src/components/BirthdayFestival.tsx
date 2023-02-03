@@ -15,7 +15,7 @@ export const BirthdayFestival = () => {
   };
 
   function conditionalClasses (index: number) {
-    return index === getRandomIndex() ? 'text-3xl' :  'text-xl'    
+    return index === getRandomIndex() ? 'sm:text-3xl' :  'sm:text-xl'    
   }
  
   useEffect(() => {
@@ -38,9 +38,9 @@ export const BirthdayFestival = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='px-4 bg-paper w-[500px] h-[800px]'>
+      <div className='px-4 bg-paper w-[300px] sm:w-[500px] md:h-[800px]'>
         <div className='flex flex-col items-center my-4'>
-          <h1 className='text-4xl font-rock-salty text-red-600'>
+          <h1 className='sm:text-4xl text-xl font-rock-salty text-red-600'>
             My Birthday Festival
           </h1>
         </div>
@@ -50,7 +50,7 @@ export const BirthdayFestival = () => {
               return (
                 <div className='flex flex-col items-center mb-2'>
                   <div 
-                    className={`${conditionalClasses(index)} font-unbounded truncate max-w-[450px]`} 
+                    className={`text-lg max-w-[280px] ${conditionalClasses(index)} font-unbounded truncate md:max-w-[450px]`} 
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
