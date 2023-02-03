@@ -50,7 +50,7 @@ export const BirthdayFestival = () => {
               return (
                 <div className='flex flex-col items-center mb-2'>
                   <div 
-                    className={`${conditionalClasses(index)} font-unbounded`} 
+                    className={`${conditionalClasses(index)} font-unbounded truncate max-w-[450px]`} 
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
