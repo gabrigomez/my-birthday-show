@@ -33,7 +33,7 @@ export const BirthdayFestival = () => {
       };
       getTopTracks()
     };    
-  }, [token, haveAccess, dispacth]);
+  }, [token, haveAccess, tracks, dispacth]);
   console.log(tracks)
 
   return (
