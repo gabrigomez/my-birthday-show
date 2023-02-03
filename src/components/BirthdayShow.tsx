@@ -4,7 +4,7 @@ import { RootState } from '../store';
 import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_SHORT } from '../utils/endpoints';
 
-export const BirthdayFestival = () => {
+export const BirthdayShow = () => {
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
   const tracks = useSelector((state: RootState) => state.user.tracks);
@@ -41,7 +41,7 @@ export const BirthdayFestival = () => {
       <div className='px-4 bg-paper w-[300px] sm:w-[500px] md:h-[800px]'>
         <div className='flex flex-col items-center my-4'>
           <h1 className='sm:text-4xl text-xl font-permanent text-red-600'>
-            My Birthday Festival
+            My Birthday Show
           </h1>
         </div>
         <div>

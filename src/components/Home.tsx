@@ -45,7 +45,7 @@ export const Home = () => {
         if(response.ok) {
           const token = await response.json();    
           dispacth(login(token.access_token));
-          navigate('/birthday-festival');
+          navigate('/birthday-show');
         };    
       };
 
@@ -62,10 +62,10 @@ export const Home = () => {
           <FaMusic className='text-2xl text-green-400'/>
         </div>
         <h1 className='text-5xl mb-2'>
-          My Birthday Festival
+          My Birthday Show
         </h1>
         <h3 className=''>
-          E se sua festa de aniversário fosse um festival?
+          E se sua festa de aniversário fosse um show?
         </h3>
       </div>
       <div>
