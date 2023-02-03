@@ -38,7 +38,7 @@ export const BirthdayFestival = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='px-4 bg-paper'>
+      <div className='px-4 bg-paper w-[500px] h-[800px]'>
         <div className='flex flex-col items-center my-4'>
           <h1 className='text-4xl font-rock-salty text-red-600'>
             My Birthday Festival
