@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'rock-salty': ['Rock Salt', 'cursive'],
-        'unbounded': ['Unbounded', 'cursive']
+        'unbounded': ['Unbounded', 'cursive'],
+        'permanent': ['Permanent Marker', 'cursive'],
       },
       backgroundImage: {
         'paper': "url('./assets/paper.png')",

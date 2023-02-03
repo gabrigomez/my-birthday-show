@@ -40,7 +40,7 @@ export const BirthdayFestival = () => {
     <div className='flex flex-col mt-10 items-center'>
       <div className='px-4 bg-paper w-[300px] sm:w-[500px] md:h-[800px]'>
         <div className='flex flex-col items-center my-4'>
-          <h1 className='sm:text-4xl text-xl font-rock-salty text-red-600'>
+          <h1 className='sm:text-4xl text-xl font-permanent text-red-600'>
             My Birthday Festival
           </h1>
         </div>
@@ -50,11 +50,11 @@ export const BirthdayFestival = () => {
               return (
                 <div className='flex flex-col items-center mb-2'>
                   <div 
-                    className={`text-lg max-w-[280px] ${conditionalClasses(index)} font-unbounded truncate md:max-w-[450px]`} 
+                    className={`text-lg max-w-[280px] ${conditionalClasses(index)} font-permanent truncate sm:max-w-[450px]`} 
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
-                  <div className='text-xs'>
+                  <div className='text-xs font-permanent text-red-500'>
                     {track.artists[0].name}
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export const BirthdayFestival = () => {
             })
           )}
           <div className='flex justify-center text-lg mt-3'>
-            2023
+            <p className='text-sm font-permanent'>2023</p>
           </div>
         </div>
       </div>
