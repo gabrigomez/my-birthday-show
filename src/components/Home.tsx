@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { login } from '../features/userSlice';
 import { RootState } from '../store';
@@ -79,9 +79,9 @@ export const Home = () => {
                   Login to Spotify
                 </p>
             </a>
-            <a className='text-xs mt-2 hover:text-blue-700 duration-300' href="/">
+            <Link className='text-xs mt-2 hover:text-blue-700 duration-300' to="/privacy">
               Termos de uso
-            </a>
+            </Link>
           </div>
         )}      
       </div>
