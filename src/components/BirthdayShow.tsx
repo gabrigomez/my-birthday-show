@@ -30,9 +30,9 @@ export const BirthdayShow = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1'>
+      <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1'>
         <div className='flex flex-col items-center my-2'>
-          <h1 className='text-2xl sm:text-4xl font-permanent text-red-600'>
+          <h1 className='text-2xl font-permanent text-red-600'>
             MY BIRTHDAY SHOW
           </h1>
         </div>
