@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import { BirthdayShow } from './components/BirthdayShow';
-import { Terms } from './components/Terms';
+import { Privacy } from './components/Privacy';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/birthday-show' element={<BirthdayShow />} />
-          <Route path='/privacy' element={<Terms />} />
+          <Route path='/privacy' element={<Privacy />} />
         </Routes>
       </main>
     </div>

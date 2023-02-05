@@ -3,7 +3,7 @@ import { BiCake } from 'react-icons/bi';
 import { FaMusic } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-export const Terms = () => {
+export const Privacy = () => {
   return (
     <div className='flex flex-col items-center mx-4'>
       <Link className='flex items-center my-4 group' to='/'>
