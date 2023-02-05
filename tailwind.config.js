@@ -12,6 +12,12 @@ module.exports = {
       backgroundImage: {
         'paper': "url('./assets/paper.png')",
       },
+      screens: {
+        'xs': '550px',
+      },
+      fontSize: {
+        'md': '0.9rem',
+      }
     },
   },
   plugins: [],
