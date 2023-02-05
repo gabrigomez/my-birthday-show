@@ -55,13 +55,13 @@ export const Home = () => {
   }, [authorizationCode, token, haveAccess, navigate, dispacth]);
 
   return (
-    <div className='flex flex-col h-full items-center justify-center bg-gradient-to-t from-white to-gray-300'>
+    <div className='flex flex-col h-full items-center justify-center bg-gradient-to-t from-white to-slate-300'>
       <div className='flex flex-col items-center'>
         <div className='flex mb-1'>
           <BiCake className='text-7xl' />
           <FaMusic className='text-2xl text-green-400'/>
         </div>
-        <h1 className='text-5xl mb-2'>
+        <h1 className='text-4xl mb-2'>
           My Birthday Show
         </h1>
         <h3 className=''>
