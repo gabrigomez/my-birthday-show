@@ -10,14 +10,6 @@ export const BirthdayShow = () => {
   const tracks = useSelector((state: RootState) => state.user.tracks);
   const dispacth = useDispatch();
 
-  function getRandomIndex(min: number = 0, max: number = 12) {
-    return Math.floor (Math.random() * (max - min) + min);
-  };
-
-  function conditionalClasses (index: number) {
-    return index === getRandomIndex() ? 'sm:text-3xl' :  'sm:text-xl'    
-  }
- 
   useEffect(() => {
     if(haveAccess && tracks.length < 13) {
       const getTopTracks = async () => {    
@@ -41,7 +33,7 @@ export const BirthdayShow = () => {
       <div className='px-4 bg-paper w-[300px] sm:w-[500px] md:h-[800px]'>
         <div className='flex flex-col items-center my-4'>
           <h1 className='sm:text-4xl text-xl font-permanent text-red-600'>
-            My Birthday Show
+            MY BIRTHDAY SHOW
           </h1>
         </div>
         <div>
@@ -50,7 +42,7 @@ export const BirthdayShow = () => {
               return (
                 <div className='flex flex-col items-center mb-2'>
                   <div 
-                    className={`text-lg max-w-[280px] ${conditionalClasses(index)} font-permanent truncate sm:max-w-[450px]`} 
+                    className={`text-lg max-w-[280px] font-permanent truncate sm:max-w-[450px]`} 
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
@@ -61,7 +53,7 @@ export const BirthdayShow = () => {
               )
             })
           )}
-          <div className='flex justify-center text-lg mt-3'>
+          <div className='flex justify-center text-lg mt-2'>
             <p className='text-sm font-permanent'>2023</p>
           </div>
         </div>
