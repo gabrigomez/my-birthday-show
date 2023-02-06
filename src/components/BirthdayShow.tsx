@@ -4,11 +4,33 @@ import { RootState } from '../store';
 import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_SHORT } from '../utils/endpoints';
 
+import html2canvas from 'html2canvas';
+
+
 export const BirthdayShow = () => {
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
   const tracks = useSelector((state: RootState) => state.user.tracks);
   const dispacth = useDispatch();
+  
+  const setlist: HTMLCanvasElement = document.querySelector('#setlist')!;
+
+  const downloadSetlist = () => {
+    const a = document.createElement('a');
+    let imageToDownload:string = '';
+    
+    html2canvas(setlist).then(function(canvas) {
+      imageToDownload = canvas.toDataURL("image/png", 0.9);
+      console.log(imageToDownload)
+      
+      document.body.appendChild(a);
+      a.href = imageToDownload;
+      a.download = 'my-birthday-party.png';
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
+
 
   useEffect(() => {
     if(haveAccess && tracks.length < 13) {
@@ -30,7 +52,7 @@ export const BirthdayShow = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1'>
+      <image className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
         <div className='flex flex-col items-center my-2'>
           <h1 className='text-2xl font-permanent text-red-600'>
             MY BIRTHDAY SHOW
@@ -42,7 +64,7 @@ export const BirthdayShow = () => {
               return (
                 <div className='flex flex-col items-center mb-1'>
                   <div 
-                    className={`text-md max-w-[320px] font-permanent truncate sm:max-w-[450px]`} 
+                    className={`text-md max-w-[320px] sm:max-w-[450px] font-permanent truncate `} 
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
@@ -57,7 +79,10 @@ export const BirthdayShow = () => {
             <p className='text-sm font-permanent'>2023</p>
           </div>
         </div>
-      </div>
+      </image>
+      <button onClick={downloadSetlist}>
+        DOWNLOAD
+      </button>
     </div>
   )
 }
