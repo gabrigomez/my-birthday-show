@@ -62,9 +62,9 @@ export const BirthdayShow = () => {
           {tracks && (
             tracks.map((track, index) => {
               return (
-                <div className='flex flex-col items-center mb-1'>
+                <div className='flex flex-col items-center'>
                   <div 
-                    className={`text-md max-w-[320px] sm:max-w-[450px] font-permanent truncate `} 
+                    className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
@@ -75,7 +75,7 @@ export const BirthdayShow = () => {
               )
             })
           )}
-          <div className='flex justify-end'>
+          <div className='flex justify-end mt-4'>
             <p className='text-sm font-permanent'>2023</p>
           </div>
         </div>
