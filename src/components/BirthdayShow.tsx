@@ -80,7 +80,7 @@ export const BirthdayShow = () => {
           </div>
         </div>
       </image>
-      <button onClick={downloadSetlist}>
+      <button className='text-white text-sm border-b rounded-full mt-4 p-2 bg-green-500 hover:bg-green-400 duration-300' onClick={downloadSetlist}>
         DOWNLOAD
       </button>
     </div>
