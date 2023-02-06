@@ -4,8 +4,8 @@ import { RootState } from '../store';
 import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_SHORT } from '../utils/endpoints';
 
+import { MdSaveAlt } from 'react-icons/md';
 import html2canvas from 'html2canvas';
-
 
 export const BirthdayShow = () => {
   const token = useSelector((state: RootState) => state.user.token);
@@ -80,8 +80,14 @@ export const BirthdayShow = () => {
           </div>
         </div>
       </image>
-      <button className='text-white text-sm border-b rounded-full mt-4 p-2 bg-green-500 hover:bg-green-400 duration-300' onClick={downloadSetlist}>
-        DOWNLOAD
+      <button 
+        className='flex text-white text-sm border-b rounded-full 
+        bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
+        onClick={downloadSetlist}>
+          <MdSaveAlt className='text-lg mr-1' />
+          <p>
+            SAVE
+          </p>
       </button>
     </div>
   )
