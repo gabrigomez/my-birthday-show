@@ -24,10 +24,13 @@ export const userSlice = createSlice({
     },
     getTracks: (state, action: PayloadAction<Array<Tracks>>) => {
       state.tracks.push(...action.payload);
-    },  
+    },
+    clearTracks: (state) => {
+      state.tracks = []
+    }  
   },
 });
 
-export const { login, getTracks } = userSlice.actions;
+export const { login, getTracks, clearTracks } = userSlice.actions;
 
 export default userSlice.reducer;

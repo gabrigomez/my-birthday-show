@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { getTracks } from '../features/userSlice';
-import { TOP_TRACKS_SHORT } from '../utils/endpoints';
+import { clearTracks, getTracks } from '../features/userSlice';
+import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
 
 import { MdSaveAlt } from 'react-icons/md';
 import html2canvas from 'html2canvas';
@@ -30,6 +30,30 @@ export const BirthdayShow = () => {
       document.body.removeChild(a);
     });
   };
+
+  const getAllTracks = async() => {
+    const response = await fetch(TOP_TRACKS_LONG, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const tracks = await response.json();
+    dispacth(clearTracks());
+    dispacth(getTracks(tracks.items));
+  };
+
+  const getSemesterTracks = async() => {
+    const response = await fetch(TOP_TRACKS_MEDIUM, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const tracks = await response.json();
+    dispacth(clearTracks());
+    dispacth(getTracks(tracks.items));
+  };
   
   useEffect(() => {
     if(haveAccess && tracks.length < 13) {
@@ -47,8 +71,8 @@ export const BirthdayShow = () => {
       getTopTracks()
     };    
   }, [token, haveAccess, tracks, dispacth]);
-  console.log(tracks)
-
+  console.log(tracks);
+  
   return (
     <div className='flex flex-col mt-10 items-center'>
       <image className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
@@ -88,6 +112,17 @@ export const BirthdayShow = () => {
             SAVE
           </p>
       </button>
+      <div>
+        {/* <button onClick={() => getTop('short')}>
+          Último mês
+        </button> */}
+        <button onClick={() => getSemesterTracks()}>
+          6 meses
+        </button> 
+        <button onClick={() => getAllTracks()}>
+          Sempre
+        </button>
+      </div>
     </div>
   )
 }
