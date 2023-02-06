@@ -29,9 +29,8 @@ export const BirthdayShow = () => {
       a.click();
       document.body.removeChild(a);
     });
-  }
-
-
+  };
+  
   useEffect(() => {
     if(haveAccess && tracks.length < 13) {
       const getTopTracks = async () => {    

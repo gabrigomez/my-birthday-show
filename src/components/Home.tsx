@@ -61,7 +61,7 @@ export const Home = () => {
           <BiCake className='text-7xl' />
           <FaMusic className='text-2xl text-green-400'/>
         </div>
-        <h1 className='text-4xl mb-2'>
+        <h1 className='text-4xl mb-2 font-permanent'>
           My Birthday Show
         </h1>
         <h3 className=''>
