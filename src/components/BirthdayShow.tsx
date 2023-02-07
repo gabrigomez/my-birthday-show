@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store';
+import { Tracks } from '../utils/interfaces';
+
 import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
-
 import { MdSaveAlt } from 'react-icons/md';
 import html2canvas from 'html2canvas';
-import { Tracks } from '../utils/interfaces';
 
 export const BirthdayShow = () => {
   const [tracks, setTracks] = useState<Array<Tracks>>([]);;
@@ -17,8 +18,13 @@ export const BirthdayShow = () => {
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
   
-  const dispacth = useDispatch(); 
   const setlist: HTMLCanvasElement = document.querySelector('#setlist')!;
+  const dispacth = useDispatch(); 
+  const navigate = useNavigate();
+
+  if(!haveAccess) {
+    navigate('/');
+  }
 
   const downloadSetlist = () => {
     const a = document.createElement('a');
@@ -77,7 +83,7 @@ export const BirthdayShow = () => {
     getAllTracks();      
     getSemesterTracks();      
   }, [dispacth, token]);
-  
+
   console.log(tracks);
   
   return (
