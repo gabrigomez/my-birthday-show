@@ -1,18 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { clearTracks, getTracks } from '../features/userSlice';
+import { clearTracks, getMonthTracks, getTracks } from '../features/userSlice';
 import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
 
 import { MdSaveAlt } from 'react-icons/md';
 import html2canvas from 'html2canvas';
+import { Tracks } from '../utils/interfaces';
 
 export const BirthdayShow = () => {
+  const [tracks, setTracks] = useState(useSelector((state: RootState) => state.user.tracks));
+  const [allTracks, setAllTracks] = useState<Array<Tracks>>([]);
+  const [semesterTracks, setSemesterTracks] = useState<Array<Tracks>>([]);
+
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
-  const tracks = useSelector((state: RootState) => state.user.tracks);
-  const dispacth = useDispatch();
+  const monthTracks = useSelector((state: RootState) => state.user.monthTracks); 
   
+  const dispacth = useDispatch(); 
   const setlist: HTMLCanvasElement = document.querySelector('#setlist')!;
 
   const downloadSetlist = () => {
@@ -31,46 +36,61 @@ export const BirthdayShow = () => {
     });
   };
 
-  const getAllTracks = async() => {
+  const getTopTracks = async () => {    
+    const response = await fetch(TOP_TRACKS_SHORT, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    dispacth(clearTracks());
+    dispacth(getMonthTracks(data.items));
+    setTracks(data.items);
+  };
+
+  const getAllTracks = async() => {    
     const response = await fetch(TOP_TRACKS_LONG, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    const tracks = await response.json();
+    const data = await response.json();
     dispacth(clearTracks());
-    dispacth(getTracks(tracks.items));
-  };
+    dispacth(getTracks(data.items));
+    setAllTracks(data.items);
+  };  
 
-  const getSemesterTracks = async() => {
+  const getSemesterTracks = async() => {  
     const response = await fetch(TOP_TRACKS_MEDIUM, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    const tracks = await response.json();
+    const data = await response.json();
     dispacth(clearTracks());
-    dispacth(getTracks(tracks.items));
-  };
+    dispacth(getTracks(data.items));
+    setSemesterTracks(data.items);
+  }; 
   
   useEffect(() => {
     if(haveAccess && tracks.length < 13) {
-      const getTopTracks = async () => {    
-        const response = await fetch(TOP_TRACKS_SHORT, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-    
-        const tracks = await response.json();
-        dispacth(getTracks(tracks.items));
+      if(monthTracks.length === 0) {        
+        getTopTracks();
       };
-      getTopTracks()
+
+      if(allTracks.length === 0) {          
+        getAllTracks();
+      };
+     
+      if(semesterTracks.length === 0) {
+        getSemesterTracks();
+      };
     };    
-  }, [token, haveAccess, tracks, dispacth]);
+  });
   console.log(tracks);
   
   return (
@@ -113,13 +133,13 @@ export const BirthdayShow = () => {
           </p>
       </button>
       <div>
-        {/* <button onClick={() => getTop('short')}>
+        <button onClick={() => setTracks(monthTracks)}>
           Último mês
-        </button> */}
-        <button onClick={() => getSemesterTracks()}>
+        </button>
+        <button onClick={() => setTracks(semesterTracks)}>
           6 meses
         </button> 
-        <button onClick={() => getAllTracks()}>
+        <button onClick={() => setTracks(allTracks)}>
           Sempre
         </button>
       </div>
