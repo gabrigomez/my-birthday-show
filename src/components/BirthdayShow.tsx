@@ -90,13 +90,13 @@ export const BirthdayShow = () => {
     <div className='flex flex-col mt-10 items-center'>
       <image className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
         <div className='flex flex-col items-center my-2'>
-          <h1 className='text-2xl font-permanent text-red-600'>
+          <h1 className='text-3xl font-permanent text-green-600'>
             MY BIRTHDAY SHOW
           </h1>
         </div>
         <div>
           {tracks && (
-            tracks.map((track, index) => {
+            tracks.map((track) => {
               return (
                 <div className='flex flex-col items-center'>
                   <div 
@@ -104,7 +104,7 @@ export const BirthdayShow = () => {
                     key={track.name}>
                       {track.name.toUpperCase()}
                   </div>
-                  <div className='text-xs font-permanent text-red-500'>
+                  <div className='text-xs font-permanent text-green-500'>
                     {track.artists[0].name}
                   </div>
                 </div>
