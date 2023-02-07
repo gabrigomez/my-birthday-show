@@ -126,14 +126,24 @@ export const BirthdayShow = () => {
           </p>
       </button>
       <div>
-        <button onClick={() => setTracks(monthTracks)}>
-          Último mês
+        <button
+          className='text-md border-b focus:border-black text-green-500
+          hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
+          onClick={() => setTracks(monthTracks)}
+        >
+            ULTIMO MÊS
         </button>
-        <button onClick={() => setTracks(semesterTracks)}>
-          6 meses
+        <button
+          className='text-md border-b focus:border-black text-green-500
+          hover:text-green-400 duration-300 mt-4 mr-2 p-1'  
+          onClick={() => setTracks(semesterTracks)}>
+            6 MESES
         </button> 
-        <button onClick={() => setTracks(allTracks)}>
-          Sempre
+        <button 
+          className='text-md border-b focus:border-black text-green-500
+          hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
+          onClick={() => setTracks(allTracks)}>
+            SEMPRE
         </button>
       </div>
     </div>
