@@ -1,4 +1,4 @@
-# My Birthday Show 1.0 :man_office_worker: :computer:	
+# My Birthday Show 1.0 :studio_microphone: :star_struck:
 
 Já pensou se sua festa de aniversário fosse um show?
 Disponível em https://mybirthdayshow.netlify.app/
