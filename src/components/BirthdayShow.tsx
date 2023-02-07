@@ -36,7 +36,7 @@ export const BirthdayShow = () => {
     });
   };
 
-  const getTopTracks = async () => {    
+  const getMonthTracks = async () => {    
     const response = await fetch(TOP_TRACKS_SHORT, {
       method: 'GET',
       headers: {
@@ -45,8 +45,7 @@ export const BirthdayShow = () => {
     });
 
     const data = await response.json();
-    dispacth(clearTracks());
-    dispacth(getMonthTracks(data.items));
+    dispacth(getTracks(data.items));
     setTracks(data.items);
   };
 
@@ -58,8 +57,6 @@ export const BirthdayShow = () => {
       },
     });
     const data = await response.json();
-    dispacth(clearTracks());
-    dispacth(getTracks(data.items));
     setAllTracks(data.items);
   };  
 
@@ -71,15 +68,13 @@ export const BirthdayShow = () => {
       },
     });
     const data = await response.json();
-    dispacth(clearTracks());
-    dispacth(getTracks(data.items));
     setSemesterTracks(data.items);
   }; 
   
   useEffect(() => {
     if(haveAccess && tracks.length < 13) {
       if(monthTracks.length === 0) {        
-        getTopTracks();
+        getMonthTracks();
       };
 
       if(allTracks.length === 0) {          
