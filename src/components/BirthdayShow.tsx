@@ -22,7 +22,7 @@ export const BirthdayShow = () => {
   const dispacth = useDispatch(); 
   const navigate = useNavigate();
 
-  if(!haveAccess) {
+  if(!haveAccess || tracks.length === 0) {
     navigate('/');
   }
 
