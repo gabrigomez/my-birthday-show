@@ -7,6 +7,7 @@ import { Tracks } from '../utils/interfaces';
 import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
 import { MdSaveAlt } from 'react-icons/md';
+import { ImSpinner8 } from 'react-icons/im';
 import html2canvas from 'html2canvas';
 
 export const BirthdayShow = () => {
@@ -22,7 +23,7 @@ export const BirthdayShow = () => {
   const dispacth = useDispatch(); 
   const navigate = useNavigate();
 
-  if(!haveAccess || tracks.length === 0) {
+  if(!haveAccess) {
     navigate('/');
   }
 
@@ -89,66 +90,74 @@ export const BirthdayShow = () => {
   
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
-        <div className='flex flex-col items-center my-2'>
-          <h1 className='text-2xl font-permanent text-green-600'>
-            MY BIRTHDAY SHOW
-          </h1>
-        </div>
-        <div>
-          {tracks && (
-            tracks.map((track) => {
-              return (
-                <div className='flex flex-col items-center'>
-                  <div 
-                    className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
-                    key={track.name}>
-                      {track.name.toUpperCase()}
-                  </div>
-                  <div className='text-xs font-permanent text-green-500'>
-                    {track.artists[0].name}
-                  </div>
-                </div>
-              )
-            })
-          )}
-          <div className='flex flex-col items-center mt-6'>
-            <p className='text-sm opacity-70 font-permanent'>
-              mybirthdayshow.netlify.app
-            </p>
+      {tracks.length > 0 ? (
+        <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
+          <div className='flex flex-col items-center my-2'>
+            <h1 className='text-2xl font-permanent text-green-600'>
+              MY BIRTHDAY SHOW
+            </h1>
           </div>
-         </div>
-      </div>
-      <button 
-        className='flex text-white text-sm border-b rounded-full 
-        bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
-        onClick={downloadSetlist}>
-          <MdSaveAlt className='text-lg mr-1' />
-          <p>
-            SAVE
-          </p>
-      </button>
-      <div>
-        <button
-          className='text-md border-b focus:border-black text-green-500
-          hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
-          onClick={() => setTracks(monthTracks)}
-        >
-            ULTIMO MÊS
-        </button>
-        <button
-          className='text-md border-b focus:border-black text-green-500
-          hover:text-green-400 duration-300 mt-4 mr-2 p-1'  
-          onClick={() => setTracks(semesterTracks)}>
-            6 MESES
-        </button> 
-        <button 
-          className='text-md border-b focus:border-black text-green-500
-          hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
-          onClick={() => setTracks(allTracks)}>
-            SEMPRE
-        </button>
-      </div>
+          <div>
+            {tracks && (
+              tracks.map((track) => {
+                return (
+                  <div className='flex flex-col items-center'>
+                    <div 
+                      className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
+                      key={track.name}>
+                        {track.name.toUpperCase()}
+                    </div>
+                    <div className='text-xs font-permanent text-green-500'>
+                      {track.artists[0].name}
+                    </div>
+                  </div>
+                )
+              })
+            )}
+            <div className='flex flex-col items-center mt-6'>
+              <p className='text-sm opacity-70 font-permanent'>
+                mybirthdayshow.netlify.app
+              </p>
+            </div>
+          </div>
+          <div className='flex flex-col items-center'>
+            <button 
+              className='flex items-center text-white text-sm border-b rounded-full 
+              bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
+              onClick={downloadSetlist}>
+                <MdSaveAlt className='text-lg mr-1' />
+                <p>
+                  SAVE
+                </p>
+            </button>
+            <div>            
+              <button
+                className='text-md border-b focus:border-black text-green-500
+                hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
+                onClick={() => setTracks(monthTracks)}
+              >
+                ULTIMO MÊS
+              </button>
+              <button
+                className='text-md border-b focus:border-black text-green-500
+                hover:text-green-400 duration-300 mt-4 mr-2 p-1'  
+                onClick={() => setTracks(semesterTracks)}>
+                6 MESES
+              </button> 
+              <button 
+                className='text-md border-b focus:border-black text-green-500
+                hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
+                onClick={() => setTracks(allTracks)}>
+                SEMPRE
+              </button>
+            </div>          
+          </div>
+        </div>
+      ) : (
+        <div className='flex justify-center'>
+          <ImSpinner8 className='animate-spin text-7xl text-green-400' />
+        </div>
+      )}      
     </div>
   )
 }
