@@ -111,10 +111,12 @@ export const BirthdayShow = () => {
               )
             })
           )}
-          <div className='flex justify-end mt-4'>
-            <p className='text-sm font-permanent'>2023</p>
+          <div className='flex flex-col items-center mt-6'>
+            <p className='text-sm opacity-70 font-permanent'>
+              mybirthdayshow.netlify.app
+            </p>
           </div>
-        </div>
+         </div>
       </image>
       <button 
         className='flex text-white text-sm border-b rounded-full 
