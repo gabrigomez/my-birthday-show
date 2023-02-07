@@ -30,6 +30,7 @@ export const BirthdayShow = () => {
     const a = document.createElement('a');
     let imageToDownload:string = '';
     
+    window.scrollTo(0, 0);   //prevent cut the final image
     html2canvas(setlist).then(function(canvas) {
       imageToDownload = canvas.toDataURL("image/png", 0.9);
       console.log(imageToDownload)
@@ -88,9 +89,9 @@ export const BirthdayShow = () => {
   
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <image className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
+      <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
         <div className='flex flex-col items-center my-2'>
-          <h1 className='text-2xl shadow-md font-permanent text-green-600'>
+          <h1 className='text-2xl font-permanent text-green-600'>
             MY BIRTHDAY SHOW
           </h1>
         </div>
@@ -117,7 +118,7 @@ export const BirthdayShow = () => {
             </p>
           </div>
          </div>
-      </image>
+      </div>
       <button 
         className='flex text-white text-sm border-b rounded-full 
         bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
