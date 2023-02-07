@@ -34,59 +34,50 @@ export const BirthdayShow = () => {
       a.click();
       document.body.removeChild(a);
     });
-  };
-
-  const getMonthTracks = async () => {    
-    const response = await fetch(TOP_TRACKS_SHORT, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await response.json();
-    dispacth(getTracks(data.items));
-    setMonthTracks(data.items);
-    setTracks(data.items);
-  };
-
-  const getAllTracks = async() => {    
-    const response = await fetch(TOP_TRACKS_LONG, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    setAllTracks(data.items);
   };  
-
-  const getSemesterTracks = async() => {  
-    const response = await fetch(TOP_TRACKS_MEDIUM, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    setSemesterTracks(data.items);
-  }; 
   
-  useEffect(() => {
-    if(haveAccess && tracks.length < 13) {
-      if(monthTracks.length === 0) {        
-        getMonthTracks();
-      };
+  useEffect(() => {   
+    const getMonthTracks = async () => {    
+      const response = await fetch(TOP_TRACKS_SHORT, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      const data = await response.json();
+      dispacth(getTracks(data.items));
+      setMonthTracks(data.items);
+      setTracks(data.items);
+    };
+  
+    const getAllTracks = async() => {    
+      const response = await fetch(TOP_TRACKS_LONG, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setAllTracks(data.items);
+    };  
+  
+    const getSemesterTracks = async() => {  
+      const response = await fetch(TOP_TRACKS_MEDIUM, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setSemesterTracks(data.items);
+    };
 
-      if(allTracks.length === 0) {          
-        getAllTracks();
-      };
-     
-      if(semesterTracks.length === 0) {
-        getSemesterTracks();
-      };
-    };    
-  }, []);
+    getMonthTracks();               
+    getAllTracks();      
+    getSemesterTracks();      
+  }, [dispacth, token]);
+  
   console.log(tracks);
   
   return (
