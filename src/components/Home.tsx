@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { login } from '../features/userSlice';
 import { RootState } from '../store';
+import { login } from '../features/userSlice';
 import { AUTH_FULL_ENDPOINT, REDIRECT_URI, TOKEN_ENDPOINT } from '../utils/endpoints';
 
 import { SlSocialSpotify } from 'react-icons/sl';
@@ -18,7 +18,7 @@ export const Home = () => {
   const token  = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.haveAccess);
   const navigate = useNavigate();
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   
   useEffect(() => {
     const href = window.location.href;
@@ -44,15 +44,14 @@ export const Home = () => {
     
         if(response.ok) {
           const token = await response.json();    
-          dispacth(login(token.access_token));
+          dispatch(login(token.access_token));
           navigate('/birthday-show');
         };    
       };
-
       getToken(code);     
     };
    
-  }, [authorizationCode, token, haveAccess, navigate, dispacth]);
+  }, [authorizationCode, token, haveAccess, navigate, dispatch]);
 
   return (
     <div className='flex flex-col h-full items-center justify-center bg-gradient-to-t from-white to-slate-300'>

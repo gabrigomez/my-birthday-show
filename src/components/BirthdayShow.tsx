@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { RootState } from '../store';
 import { Tracks } from '../utils/interfaces';
-
 import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
+
 import { MdSaveAlt } from 'react-icons/md';
 import { ImSpinner8 } from 'react-icons/im';
 import html2canvas from 'html2canvas';
@@ -29,14 +30,13 @@ export const BirthdayShow = () => {
 
   const downloadSetlist = () => {
     const a = document.createElement('a');
-    let imageToDownload:string = '';
-    
+    let imageToDownload:string = '';    
     window.scrollTo(0, 0);   //prevent cut the final image
+
     html2canvas(setlist).then(function(canvas) {
-      imageToDownload = canvas.toDataURL("image/png", 0.9);
-      console.log(imageToDownload)
-      
+      imageToDownload = canvas.toDataURL("image/png", 0.9);      
       document.body.appendChild(a);
+
       a.href = imageToDownload;
       a.download = 'my-birthday-party.png';
       a.click();
@@ -86,8 +86,6 @@ export const BirthdayShow = () => {
     getSemesterTracks();      
   }, [dispacth, token]);
 
-  console.log(tracks);
-  
   return (
     <div className='flex flex-col mt-10 items-center'>
       {tracks.length > 0 ? (
@@ -125,7 +123,7 @@ export const BirthdayShow = () => {
               className='flex items-center text-white text-sm border-b rounded-full 
               bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
               onClick={downloadSetlist}>
-                <MdSaveAlt className='text-lg mr-1' />
+                <MdSaveAlt className='text-lg mr-1'/>
                 <p>
                   SAVE
                 </p>

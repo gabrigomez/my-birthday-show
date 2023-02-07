@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BiCake } from 'react-icons/bi';
 import { FaMusic } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
