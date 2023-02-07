@@ -6,14 +6,12 @@ export interface UserState {
   token: string,
   haveAccess: boolean,
   tracks: Array<Tracks>,
-  monthTracks: Array<Tracks>
 };
 
 const initialState: UserState = {
   token: '',
   haveAccess: false,
   tracks: [],
-  monthTracks: []
 };
 
 export const userSlice = createSlice({
@@ -27,15 +25,9 @@ export const userSlice = createSlice({
     getTracks: (state, action: PayloadAction<Array<Tracks>>) => {
       state.tracks.push(...action.payload);
     },
-    getMonthTracks: (state, action: PayloadAction<Array<Tracks>>) => {
-      state.monthTracks.push(...action.payload);
-    },
-    clearTracks: (state) => {
-      state.tracks = []
-    }  
   },
 });
 
-export const { login, getTracks, getMonthTracks, clearTracks } = userSlice.actions;
+export const { login, getTracks } = userSlice.actions;
 
 export default userSlice.reducer;

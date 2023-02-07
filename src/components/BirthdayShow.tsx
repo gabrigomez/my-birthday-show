@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { clearTracks, getMonthTracks, getTracks } from '../features/userSlice';
+import { getTracks } from '../features/userSlice';
 import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
 
 import { MdSaveAlt } from 'react-icons/md';
@@ -9,13 +9,13 @@ import html2canvas from 'html2canvas';
 import { Tracks } from '../utils/interfaces';
 
 export const BirthdayShow = () => {
-  const [tracks, setTracks] = useState(useSelector((state: RootState) => state.user.tracks));
+  const [tracks, setTracks] = useState<Array<Tracks>>([]);;
   const [allTracks, setAllTracks] = useState<Array<Tracks>>([]);
+  const [monthTracks, setMonthTracks] = useState<Array<Tracks>>([]);
   const [semesterTracks, setSemesterTracks] = useState<Array<Tracks>>([]);
 
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
-  const monthTracks = useSelector((state: RootState) => state.user.monthTracks); 
   
   const dispacth = useDispatch(); 
   const setlist: HTMLCanvasElement = document.querySelector('#setlist')!;
@@ -46,6 +46,7 @@ export const BirthdayShow = () => {
 
     const data = await response.json();
     dispacth(getTracks(data.items));
+    setMonthTracks(data.items);
     setTracks(data.items);
   };
 
@@ -85,7 +86,7 @@ export const BirthdayShow = () => {
         getSemesterTracks();
       };
     };    
-  });
+  }, []);
   console.log(tracks);
   
   return (
