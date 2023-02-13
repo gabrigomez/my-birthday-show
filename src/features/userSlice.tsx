@@ -30,7 +30,8 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       localStorage.setItem('mybirthdayshow', '');
-      state = initialState;
+      state.token = null;
+      state.haveAccess = false
     }
   },
 });
