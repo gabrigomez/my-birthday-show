@@ -9,6 +9,7 @@ import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/e
 
 import { MdSaveAlt } from 'react-icons/md';
 import { ImSpinner8 } from 'react-icons/im';
+import { RiLogoutCircleFill } from 'react-icons/ri';
 import html2canvas from 'html2canvas';
 
 export const BirthdayShow = () => {
@@ -88,6 +89,14 @@ export const BirthdayShow = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
+      <div className='absolute top-2 left-20 group'>
+        <button className='flex items-center'>
+          <RiLogoutCircleFill className='text-xl text-green-500 mr-1 group-hover:text-green-600 duration-300' />
+          <p className='font-permanent text-sm'>
+            Logout
+          </p>
+        </button>
+      </div>
       {tracks.length > 0 ? (
         <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
           <div className='flex flex-col items-center my-2'>

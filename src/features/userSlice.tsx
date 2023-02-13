@@ -3,13 +3,15 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { Tracks } from '../utils/interfaces';
 
 export interface UserState {
-  token: string,
+  token: string | null,
   haveAccess: boolean,
   tracks: Array<Tracks>,
 };
 
+const token = localStorage.getItem('mybirthdayshow');
+
 const initialState: UserState = {
-  token: '',
+  token: token,
   haveAccess: false,
   tracks: [],
 };
@@ -20,6 +22,7 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, action: PayloadAction<string>) => {      
       state.token = action.payload;
+      localStorage.setItem('mybirthdayshow', state.token);
       state.haveAccess = true;
     },
     getTracks: (state, action: PayloadAction<Array<Tracks>>) => {
