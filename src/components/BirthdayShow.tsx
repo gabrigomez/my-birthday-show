@@ -112,7 +112,7 @@ export const BirthdayShow = () => {
                 )
               })
             )}
-            <div className='flex flex-col items-center mt-6'>
+            <div className='flex flex-col items-start mt-5'>
               <p className='text-sm opacity-70 font-permanent'>
                 mybirthdayshow.netlify.app
               </p>
