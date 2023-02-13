@@ -28,9 +28,13 @@ export const userSlice = createSlice({
     getTracks: (state, action: PayloadAction<Array<Tracks>>) => {
       state.tracks.push(...action.payload);
     },
+    logout: (state) => {
+      localStorage.setItem('mybirthdayshow', '');
+      state = initialState;
+    }
   },
 });
 
-export const { login, getTracks } = userSlice.actions;
+export const { login, getTracks, logout } = userSlice.actions;
 
 export default userSlice.reducer;

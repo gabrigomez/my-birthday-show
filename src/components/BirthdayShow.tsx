@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { RootState } from '../store';
 import { Tracks } from '../utils/interfaces';
-import { getTracks } from '../features/userSlice';
+import { getTracks, logout } from '../features/userSlice';
 import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/endpoints';
 
 import { MdSaveAlt } from 'react-icons/md';
@@ -22,7 +22,7 @@ export const BirthdayShow = () => {
   const haveAccess = useSelector((state: RootState) => state.user.token);
   
   const setlist: HTMLCanvasElement = document.querySelector('#setlist')!;
-  const dispacth = useDispatch(); 
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
 
   if(!haveAccess) {
@@ -55,7 +55,7 @@ export const BirthdayShow = () => {
       });
   
       const data = await response.json();
-      dispacth(getTracks(data.items));
+      dispatch(getTracks(data.items));
       setMonthTracks(data.items);
       setTracks(data.items);
     };
@@ -85,12 +85,17 @@ export const BirthdayShow = () => {
     getMonthTracks();               
     getAllTracks();      
     getSemesterTracks();      
-  }, [dispacth, token]);
+  }, [dispatch, token]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  }
 
   return (
     <div className='flex flex-col mt-10 items-center'>
       <div className='absolute top-2 left-20 group'>
-        <button className='flex items-center'>
+        <button className='flex items-center' onClick={handleLogout}>
           <RiLogoutCircleFill className='text-xl text-green-500 mr-1 group-hover:text-green-600 duration-300' />
           <p className='font-permanent text-sm'>
             Logout
