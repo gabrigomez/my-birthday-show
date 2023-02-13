@@ -94,14 +94,6 @@ export const BirthdayShow = () => {
 
   return (
     <div className='flex flex-col mt-10 items-center'>
-      <div className='absolute top-2 left-20 group'>
-        <button className='flex items-center' onClick={handleLogout}>
-          <RiLogoutCircleFill className='text-xl text-green-500 mr-1 group-hover:text-green-600 duration-300' />
-          <p className='font-permanent text-sm'>
-            Logout
-          </p>
-        </button>
-      </div>
       {tracks.length > 0 ? (
         <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
           <div className='flex flex-col items-center my-2'>
@@ -161,8 +153,16 @@ export const BirthdayShow = () => {
                 hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
                 onClick={() => setTracks(allTracks)}>
                 SEMPRE
-              </button>
+              </button>              
             </div>          
+            <button 
+              className='flex mt-10 group' 
+              onClick={handleLogout}>
+                <RiLogoutCircleFill className='text-xl text-green-500 group-hover:text-green-600 duration-300' />
+                <p className='font-permanent text-sm'>
+                  Logout
+                </p>
+            </button>      
           </div>
         </div>
       ) : (
