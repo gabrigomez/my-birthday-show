@@ -96,43 +96,41 @@ export const BirthdayShow = () => {
   }
 
   return (
-    <div className='h-full w-full'>
+    <div className='flex flex-col mt-10 items-center'>
       {tracks.length > 0 ? (
-        <div className='flex flex-col mt-10 items-center'>
-          <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
-            <div className='flex flex-col items-center my-2'>
-              <h1 className='text-2xl font-permanent text-green-600'>
-                MY BIRTHDAY SHOW
-              </h1>
-            </div>
-            <div>
-              {tracks && (
-                tracks.map((track) => {
-                  return (
-                    <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
-                      <div 
-                        className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
-                        key={track.name}>
-                          {track.name.toUpperCase()}
-                      </div>
-                      <div className='text-xs font-permanent text-green-500'>
-                        {track.artists[0].name}
-                      </div>
-                    </a>
-                  )
-                })
-              )}
-              <div className='flex justify-between mt-1'>
-                <p className='text-xxs sm:text-sm opacity-70 font-permanent mt-4'>
-                  mybirthdayshow.netlify.app
-                </p>
-                <a href='https://open.spotify.com/?' target="blank">
-                  <img src={SpotifyLogo} alt="" />
-                </a>
-              </div>
-            </div>            
+        <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
+          <div className='flex flex-col items-center my-2'>
+            <h1 className='text-2xl font-permanent text-green-600'>
+              MY BIRTHDAY SHOW
+            </h1>
           </div>
-          <div className='flex flex-col items-center'>
+          <div>
+            {tracks && (
+              tracks.map((track) => {
+                return (
+                  <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
+                    <div 
+                      className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
+                      key={track.name}>
+                        {track.name.toUpperCase()}
+                    </div>
+                    <div className='text-xs font-permanent text-green-500'>
+                      {track.artists[0].name}
+                    </div>
+                  </a>
+                )
+              })
+            )}
+            <div className='flex justify-between mt-1'>
+              <p className='text-xxs sm:text-sm opacity-70 font-permanent mt-3'>
+                mybirthdayshow.netlify.app
+              </p>
+              <a href='https://open.spotify.com/?' target="blank" className='mt-1'>
+                <img src={SpotifyLogo} alt="" />
+              </a>
+            </div>
+          </div>
+          <div className='flex flex-col items-center mt-4'>
             <button 
               className='flex items-center text-white text-sm border-b rounded-full 
               bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
@@ -171,8 +169,8 @@ export const BirthdayShow = () => {
                   Logout
                 </p>
             </button>      
-          </div>
-        </div>
+          </div>            
+        </div>          
       ) : (
         <div className='flex justify-center items-center h-3/4'>
           <ImSpinner8 className='animate-spin text-9xl text-green-400' />
