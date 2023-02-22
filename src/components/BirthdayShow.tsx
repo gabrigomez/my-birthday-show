@@ -123,7 +123,7 @@ export const BirthdayShow = () => {
                 })
               )}
               <div className='flex justify-between mt-1'>
-                <p className='text-sm opacity-70 font-permanent mt-4'>
+                <p className='text-xxs sm:text-sm opacity-70 font-permanent mt-4'>
                   mybirthdayshow.netlify.app
                 </p>
                 <a href='https://open.spotify.com/?'>
