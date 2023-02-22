@@ -93,36 +93,38 @@ export const BirthdayShow = () => {
   }
 
   return (
-    <div className='flex flex-col mt-10 items-center'>
+    <div>
       {tracks.length > 0 ? (
-        <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
-          <div className='flex flex-col items-center my-2'>
-            <h1 className='text-2xl font-permanent text-green-600'>
-              MY BIRTHDAY SHOW
-            </h1>
-          </div>
-          <div>
-            {tracks && (
-              tracks.map((track) => {
-                return (
-                  <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
-                    <div 
-                      className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
-                      key={track.name}>
-                        {track.name.toUpperCase()}
-                    </div>
-                    <div className='text-xs font-permanent text-green-500'>
-                      {track.artists[0].name}
-                    </div>
-                  </a>
-                )
-              })
-            )}
-            <div className='flex flex-col items-start mt-5'>
-              <p className='text-sm opacity-70 font-permanent'>
-                mybirthdayshow.netlify.app
-              </p>
+        <div className='flex flex-col mt-10 items-center'>
+          <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
+            <div className='flex flex-col items-center my-2'>
+              <h1 className='text-2xl font-permanent text-green-600'>
+                MY BIRTHDAY SHOW
+              </h1>
             </div>
+            <div>
+              {tracks && (
+                tracks.map((track) => {
+                  return (
+                    <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
+                      <div 
+                        className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
+                        key={track.name}>
+                          {track.name.toUpperCase()}
+                      </div>
+                      <div className='text-xs font-permanent text-green-500'>
+                        {track.artists[0].name}
+                      </div>
+                    </a>
+                  )
+                })
+              )}
+              <div className='flex flex-col items-start mt-5'>
+                <p className='text-sm opacity-70 font-permanent'>
+                  mybirthdayshow.netlify.app
+                </p>
+              </div>
+            </div>            
           </div>
           <div className='flex flex-col items-center'>
             <button 
