@@ -126,7 +126,7 @@ export const BirthdayShow = () => {
                 <p className='text-xxs sm:text-sm opacity-70 font-permanent mt-4'>
                   mybirthdayshow.netlify.app
                 </p>
-                <a href='https://open.spotify.com/?'>
+                <a href='https://open.spotify.com/?' target="blank">
                   <img src={SpotifyLogo} alt="" />
                 </a>
               </div>
