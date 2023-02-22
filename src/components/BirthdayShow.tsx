@@ -105,7 +105,7 @@ export const BirthdayShow = () => {
             {tracks && (
               tracks.map((track) => {
                 return (
-                  <div className='flex flex-col items-center'>
+                  <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
                       className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
                       key={track.name}>
@@ -114,7 +114,7 @@ export const BirthdayShow = () => {
                     <div className='text-xs font-permanent text-green-500'>
                       {track.artists[0].name}
                     </div>
-                  </div>
+                  </a>
                 )
               })
             )}
