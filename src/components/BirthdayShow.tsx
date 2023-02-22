@@ -93,7 +93,7 @@ export const BirthdayShow = () => {
   }
 
   return (
-    <div>
+    <div className='h-full w-full'>
       {tracks.length > 0 ? (
         <div className='flex flex-col mt-10 items-center'>
           <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
@@ -168,8 +168,8 @@ export const BirthdayShow = () => {
           </div>
         </div>
       ) : (
-        <div className='flex justify-center'>
-          <ImSpinner8 className='animate-spin text-7xl text-green-400' />
+        <div className='flex justify-center items-center h-3/4'>
+          <ImSpinner8 className='animate-spin text-9xl text-green-400' />
         </div>
       )}      
     </div>
