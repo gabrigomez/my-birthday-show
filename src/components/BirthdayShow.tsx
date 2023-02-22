@@ -10,7 +10,10 @@ import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/e
 import { MdSaveAlt } from 'react-icons/md';
 import { ImSpinner8 } from 'react-icons/im';
 import { RiLogoutCircleFill } from 'react-icons/ri';
+import SpotifyLogo from '../assets/SpotifyLogo.png';
+
 import html2canvas from 'html2canvas';
+
 
 export const BirthdayShow = () => {
   const [tracks, setTracks] = useState<Array<Tracks>>([]);;
@@ -119,10 +122,13 @@ export const BirthdayShow = () => {
                   )
                 })
               )}
-              <div className='flex flex-col items-start mt-5'>
-                <p className='text-sm opacity-70 font-permanent'>
+              <div className='flex justify-between mt-1'>
+                <p className='text-sm opacity-70 font-permanent mt-4'>
                   mybirthdayshow.netlify.app
                 </p>
+                <a href='https://open.spotify.com/?'>
+                  <img src={SpotifyLogo} alt="" />
+                </a>
               </div>
             </div>            
           </div>
