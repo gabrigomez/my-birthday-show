@@ -10,4 +10,4 @@ export const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 export const REDIRECT_URI = `${Uri}`;
 
 export const AUTH_FULL_ENDPOINT = `${AUTH_ENDPOINT}?client_id=${clientId}&response_type=code&redirect_uri=${REDIRECT_URI}&
-scope=user-read-currently-playing%20user-top-read`;
+scope=user-top-read`;
