@@ -59,8 +59,7 @@ export const BirthdayShow = () => {
   
       const data = await response.json();
       dispatch(getTracks(data.items));
-      setMonthTracks(data.items);
-      setTracks(data.items);
+      setMonthTracks(data.items);      
     };
   
     const getAllTracks = async() => {    
@@ -72,6 +71,7 @@ export const BirthdayShow = () => {
       });
       const data = await response.json();
       setAllTracks(data.items);
+      setTracks(data.items);
     };  
   
     const getSemesterTracks = async() => {  
@@ -95,6 +95,8 @@ export const BirthdayShow = () => {
     navigate('/');
   }
 
+  const onlyAllTracks = (semesterTracks.length > 0) && (monthTracks.length > 0) ? false : true;
+
   return (
     <div className='flex flex-col mt-10 items-center'>
       {tracks.length > 0 ? (
@@ -105,7 +107,7 @@ export const BirthdayShow = () => {
             </h1>
           </div>
           <div>
-            {tracks && (
+            {tracks.length > 0 && (
               tracks.map((track) => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
@@ -140,25 +142,29 @@ export const BirthdayShow = () => {
                   SAVE
                 </p>
             </button>
-            <div>            
-              <button
-                className='text-md border-b focus:border-black text-green-500
-                hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
-                onClick={() => setTracks(monthTracks)}
-              >
-                ULTIMO MÊS
-              </button>
-              <button
-                className='text-md border-b focus:border-black text-green-500
-                hover:text-green-400 duration-300 mt-4 mr-2 p-1'  
-                onClick={() => setTracks(semesterTracks)}>
-                6 MESES
-              </button> 
+            <div>
+              {monthTracks.length > 0 && (            
+                <button
+                  className='text-md border-b focus:border-black text-green-500
+                  hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
+                  onClick={() => setTracks(monthTracks)}
+                >
+                  ULTIMO MÊS
+                </button>
+              )}
+              {semesterTracks.length > 0 && (
+                <button
+                  className='text-md border-b focus:border-black text-green-500
+                  hover:text-green-400 duration-300 mt-4 mr-2 p-1'  
+                  onClick={() => setTracks(semesterTracks)}>
+                    6 MESES
+                </button>
+              )} 
               <button 
-                className='text-md border-b focus:border-black text-green-500
-                hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
+                className={`text-md border-b focus:border-black text-green-500
+                hover:text-green-400 duration-300 mt-4 mr-2 p-1 ${onlyAllTracks ? 'hidden' : ''}`} 
                 onClick={() => setTracks(allTracks)}>
-                SEMPRE
+                  SEMPRE
               </button>              
             </div>          
             <button 
