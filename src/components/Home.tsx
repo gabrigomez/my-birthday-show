@@ -84,6 +84,13 @@ export const Home = () => {
           </div>
         )}      
       </div>
+      <footer className='flex text-xs text-slate-300 mt-6 group hover:text-slate-400 duration-300'>
+        <p>
+          develop by <a className='group-hover:text-green-400' href="https://github.com/gabrigomez"> 
+           gabrigomez - 2023
+          </a>
+        </p>
+      </footer>
     </div>
   )
 }
