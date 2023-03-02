@@ -78,7 +78,7 @@ export const Home = () => {
                   Login to Spotify
                 </p>
             </a>
-            <Link className='text-xs mt-2 hover:text-blue-700 duration-300' to="/privacy">
+            <Link className='text-xs mt-2 hover:text-green-500 duration-300' to="/privacy">
               Termos de uso
             </Link>
           </div>
@@ -86,7 +86,7 @@ export const Home = () => {
       </div>
       <footer className='flex text-xs text-slate-300 mt-6 group hover:text-slate-400 duration-300'>
         <p>
-          develop by <a className='group-hover:text-green-400' href="https://github.com/gabrigomez"> 
+          develop by <a className='group-hover:text-green-400' target="blank" href="https://github.com/gabrigomez"> 
            gabrigomez - 2023
           </a>
         </p>

@@ -25,13 +25,14 @@ export const Privacy = () => {
           </p>
           <p className='text-center text-md mb-4'>
             O usuário pode revogar o acesso do My Birthday Show ao seu perfil a qualquer momento. Para isso, basta
-            seguir os passos fornecidos pela <a className='text-green-500' href="https://support.spotify.com/us/article/spotify-on-other-apps/">
+            seguir os passos fornecidos pela <a className='text-green-500' target="blank" href="https://support.spotify.com/us/article/spotify-on-other-apps/">
             página de suporte do Spotify.</a>
           </p>
         </div>        
         <div className='flex flex-col items-center w-80 my-6 p-4 shadow-lg border rounded-xl border-slate-200'>
           <p className='text-center text-md mb-4'>
-            Dúvidas, sugestões ou reports de bugs são muito bem vindos no <a className='text-green-500' href='https://github.com/gabrigomez/my-birthday-show'>
+            Dúvidas, sugestões ou reports de bugs são muito bem 
+            vindos no <a className='text-green-500' target="blank" href='https://github.com/gabrigomez/my-birthday-show'>
             repositório oficial do projeto</a> no Github. Será um prazer falar com você! :D
           </p>
         </div>      
