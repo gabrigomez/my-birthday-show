@@ -8,6 +8,7 @@ Já pensou se sua festa de aniversário fosse um show?
 - React
 - Tailwind
 - React icons
+- Redux Toolkit
 
 ## Previews :eyes:	
 ![My Remote Image](https://user-images.githubusercontent.com/69373145/217554744-6204ddfa-467d-4d06-81f8-f83b2291b66b.png)
