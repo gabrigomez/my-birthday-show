@@ -101,7 +101,7 @@ export const BirthdayShow = () => {
       {tracks.length > 0 ? (
         <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
           <div className='flex flex-col items-center my-2'>
-            <h1 className='text-2xl font-permanent text-green-600'>
+            <h1 className='setlist'>
               MY BIRTHDAY SHOW
             </h1>
           </div>
@@ -111,11 +111,11 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate `} 
+                      className={`artist`} 
                       key={track.name}>
                         {track.name.toUpperCase()}
                     </div>
-                    <div className='text-xs font-permanent text-green-500'>
+                    <div className='song'>
                       {track.artists[0].name}
                     </div>
                   </a>
