@@ -10,7 +10,10 @@ module.exports = {
         'permanent': ['Permanent Marker', 'cursive'],
       },
       backgroundImage: {
-        'paper': "url('./assets/paper.png')",        
+        'paper': "url('./assets/paper.png')",
+        'paper_happy': "url('./assets/paper_happy.png')",
+        'paper_psychadelic': "url('./assets/paper_psychadelic.png')",
+        'paper_black': "url('./assets/paper_black.png')",        
       },
       screens: {
         'xs': '550px',
