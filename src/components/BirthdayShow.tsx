@@ -20,7 +20,7 @@ export const BirthdayShow = () => {
   const [allTracks, setAllTracks] = useState<Array<Tracks>>([]);
   const [monthTracks, setMonthTracks] = useState<Array<Tracks>>([]);
   const [semesterTracks, setSemesterTracks] = useState<Array<Tracks>>([]);
-  const [backGround, setBackground] = useState('bg-paper');
+  const [backGround, setBackground] = useState('bg-default');
 
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
@@ -101,7 +101,7 @@ export const BirthdayShow = () => {
       {tracks.length > 0 ? (
         <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
           <div className='flex flex-col items-center my-2'>
-            <h1 className='setlist'>
+            <h1 className={`setlist ${backGround === 'bg-happy' ? 'text-white' : ''}`}>
               MY BIRTHDAY SHOW
             </h1>
           </div>
@@ -111,11 +111,11 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`artist`} 
+                      className={`artist ${backGround === 'bg-happy' ? 'text-white' : ''}`} 
                       key={track.name}>
                         {track.name.toUpperCase()}
                     </div>
-                    <div className='song'>
+                    <div className={`song ${backGround === 'bg-black' || backGround === 'bg-psychadelic' ? 'text-white' : ''}`}>
                       {track.artists[0].name}
                     </div>
                   </a>
@@ -123,7 +123,7 @@ export const BirthdayShow = () => {
               })
             )}
             <div className='flex justify-between mt-1'>
-              <p className='text-xxs sm:text-sm opacity-70 font-permanent mt-3'>
+              <p className={`text-xxs sm:text-sm opacity-70 font-permanent mt-3 ${backGround === 'bg-black' ? 'text-white' : ''}`}>
                 mybirthdayshow.netlify.app
               </p>
               <a href='https://open.spotify.com/?' target="blank" className='mt-1'>
@@ -158,16 +158,16 @@ export const BirthdayShow = () => {
               </button>              
             </div>
             <div>
-              <button className='theme-buttons' onClick={() => setBackground('bg-paper')}>
+              <button className='theme-buttons' onClick={() => setBackground('bg-default')}>
                 Default
               </button>
-              <button className='theme-buttons' onClick={() => setBackground('bg-paper-black')}>
+              <button className='theme-buttons' onClick={() => setBackground('bg-black')}>
                 Black
               </button>                
-              <button className='theme-buttons' onClick={() => setBackground('bg-paper-psychadelic')}>
+              <button className='theme-buttons' onClick={() => setBackground('bg-psychadelic')}>
                 Psychadelic
               </button>
-              <button className='theme-buttons' onClick={() => setBackground('bg-paper-happy')}>
+              <button className='theme-buttons' onClick={() => setBackground('bg-happy')}>
                 Happy
               </button>
             </div>          
