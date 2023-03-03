@@ -20,6 +20,7 @@ export const BirthdayShow = () => {
   const [allTracks, setAllTracks] = useState<Array<Tracks>>([]);
   const [monthTracks, setMonthTracks] = useState<Array<Tracks>>([]);
   const [semesterTracks, setSemesterTracks] = useState<Array<Tracks>>([]);
+  const [backGround, setBackground] = useState('bg-paper');
 
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
@@ -44,13 +45,6 @@ export const BirthdayShow = () => {
       a.click();
       document.body.removeChild(a);
     });
-    // const imageToDownload = document.querySelector('#setlist')! as HTMLCanvasElement
-    // const a = document.createElement('a');
-    // document.body.appendChild(a);
-    // a.href = imageToDownload.toDataURL();
-    // a.download = 'setlist.png';
-    // a.click();
-
   };  
   
   useEffect(() => {   
@@ -100,12 +94,14 @@ export const BirthdayShow = () => {
     navigate('/');
   }
 
-  const onlyAllTracks = (semesterTracks.length > 0) && (monthTracks.length > 0) ? false : true;
+  const onlyAllTracks = (semesterTracks?.length > 0) && (monthTracks?.length > 0) ? false : true;
+
+  console.log(backGround);
 
   return (
     <div className='flex flex-col mt-10 items-center'>
       {tracks.length > 0 ? (
-        <div className='bg-no-repeat bg-paper bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border' id='setlist'>
+        <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
           <div className='flex flex-col items-center my-2'>
             <h1 className='text-2xl font-permanent text-green-600'>
               MY BIRTHDAY SHOW
@@ -149,28 +145,25 @@ export const BirthdayShow = () => {
             </button>
             <div>
               {monthTracks.length > 0 && (            
-                <button
-                  className='text-md border-b focus:border-black text-green-500
-                  hover:text-green-400 duration-300 mt-4 mr-2 p-1' 
-                  onClick={() => setTracks(monthTracks)}
-                >
+                <button className='option-buttons' onClick={() => setTracks(monthTracks)}>
                   ULTIMO MÊS
                 </button>
               )}
               {semesterTracks.length > 0 && (
-                <button
-                  className='text-md border-b focus:border-black text-green-500
-                  hover:text-green-400 duration-300 mt-4 mr-2 p-1'  
-                  onClick={() => setTracks(semesterTracks)}>
-                    6 MESES
+                <button className='option-buttons' onClick={() => setTracks(semesterTracks)}>
+                  6 MESES
                 </button>
               )} 
-              <button 
-                className={`text-md border-b focus:border-black text-green-500
-                hover:text-green-400 duration-300 mt-4 mr-2 p-1 ${onlyAllTracks ? 'hidden' : ''}`} 
+              <button className={`option-buttons ${onlyAllTracks ? 'hidden' : ''}`} 
                 onClick={() => setTracks(allTracks)}>
                   SEMPRE
               </button>              
+            </div>
+            <div>
+              <button onClick={() => setBackground('bg-paper')}>Default</button>
+              <button onClick={() => setBackground('bg-paper-black')}>Black</button>                
+              <button onClick={() => setBackground('bg-paper-psychadelic')}>Psychadelic</button>
+              <button onClick={() => setBackground('bg-paper-happy')}>Happy</button>
             </div>          
             <button 
               className='flex mt-10 group' 
