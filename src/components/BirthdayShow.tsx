@@ -96,8 +96,6 @@ export const BirthdayShow = () => {
 
   const onlyAllTracks = (semesterTracks?.length > 0) && (monthTracks?.length > 0) ? false : true;
 
-  console.log(backGround);
-
   return (
     <div className='flex flex-col mt-10 items-center'>
       {tracks.length > 0 ? (
@@ -145,25 +143,33 @@ export const BirthdayShow = () => {
             </button>
             <div>
               {monthTracks.length > 0 && (            
-                <button className='option-buttons' onClick={() => setTracks(monthTracks)}>
+                <button className='range-buttons' onClick={() => setTracks(monthTracks)}>
                   ULTIMO MÊS
                 </button>
               )}
               {semesterTracks.length > 0 && (
-                <button className='option-buttons' onClick={() => setTracks(semesterTracks)}>
+                <button className='range-buttons' onClick={() => setTracks(semesterTracks)}>
                   6 MESES
                 </button>
               )} 
-              <button className={`option-buttons ${onlyAllTracks ? 'hidden' : ''}`} 
+              <button className={`range-buttons ${onlyAllTracks ? 'hidden' : ''}`} 
                 onClick={() => setTracks(allTracks)}>
                   SEMPRE
               </button>              
             </div>
             <div>
-              <button onClick={() => setBackground('bg-paper')}>Default</button>
-              <button onClick={() => setBackground('bg-paper-black')}>Black</button>                
-              <button onClick={() => setBackground('bg-paper-psychadelic')}>Psychadelic</button>
-              <button onClick={() => setBackground('bg-paper-happy')}>Happy</button>
+              <button className='theme-buttons' onClick={() => setBackground('bg-paper')}>
+                Default
+              </button>
+              <button className='theme-buttons' onClick={() => setBackground('bg-paper-black')}>
+                Black
+              </button>                
+              <button className='theme-buttons' onClick={() => setBackground('bg-paper-psychadelic')}>
+                Psychadelic
+              </button>
+              <button className='theme-buttons' onClick={() => setBackground('bg-paper-happy')}>
+                Happy
+              </button>
             </div>          
             <button 
               className='flex mt-10 group' 

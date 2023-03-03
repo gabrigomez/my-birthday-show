@@ -6,9 +6,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 @layer components {
-  .option-buttons {
-    @apply text-md border-b focus:border-black text-green-500
+  .range-buttons {
+    @apply text-md focus:text-black text-green-500
     hover:text-green-400 duration-300 mt-4 mr-2 p-1
+  }
+  .theme-buttons {
+    @apply text-xs text-green-500 font-bold focus:text-black
+    hover:text-green-400 duration-300 mt-2 mr-2 p-1
   }
 }
 
