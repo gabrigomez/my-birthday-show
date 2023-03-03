@@ -19,10 +19,15 @@ export const Home = () => {
   const haveAccess = useSelector((state: RootState) => state.user.haveAccess);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const href = window.location.href;
     const code = href.substring(1)?.split("=")[1];
+    const localToken = localStorage.getItem('mybirthdayshow');
+
+    if(localToken) {
+      navigate('/birthday-show');
+    }; 
 
     if(code) {
       const getToken = async(code:string) => {
