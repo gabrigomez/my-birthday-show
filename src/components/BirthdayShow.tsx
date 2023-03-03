@@ -111,11 +111,11 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`artist ${backGround === 'bg-happy' ? 'text-white' : ''}`} 
+                      className={`song ${backGround === 'bg-black' || backGround === 'bg-psychadelic' ? 'text-white' : ''}`} 
                       key={track.name}>
                         {track.name.toUpperCase()}
                     </div>
-                    <div className={`song ${backGround === 'bg-black' || backGround === 'bg-psychadelic' ? 'text-white' : ''}`}>
+                    <div className={`artist ${backGround === 'bg-happy' ? 'text-white' : ''}`}>
                       {track.artists[0].name}
                     </div>
                   </a>
