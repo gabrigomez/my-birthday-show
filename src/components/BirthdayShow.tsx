@@ -23,8 +23,6 @@ export const BirthdayShow = () => {
 
   const token = useSelector((state: RootState) => state.user.token);
   const haveAccess = useSelector((state: RootState) => state.user.token);
-  
-  const setlist: HTMLCanvasElement = document.querySelector('#setlist')!;
   const dispatch = useDispatch(); 
   const navigate = useNavigate();
 
@@ -34,10 +32,10 @@ export const BirthdayShow = () => {
 
   const downloadSetlist = () => {
     const a = document.createElement('a');
-    let imageToDownload:string = '';    
+    let imageToDownload: string = '';    
     window.scrollTo(0, 0);   //prevent cut the final image
 
-    html2canvas(setlist).then(function(canvas) {
+    html2canvas(document.querySelector("#setlist")!).then((canvas) => {
       imageToDownload = canvas.toDataURL("image/png", 0.9);      
       document.body.appendChild(a);
 
@@ -46,6 +44,13 @@ export const BirthdayShow = () => {
       a.click();
       document.body.removeChild(a);
     });
+    // const imageToDownload = document.querySelector('#setlist')! as HTMLCanvasElement
+    // const a = document.createElement('a');
+    // document.body.appendChild(a);
+    // a.href = imageToDownload.toDataURL();
+    // a.download = 'setlist.png';
+    // a.click();
+
   };  
   
   useEffect(() => {   
