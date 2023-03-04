@@ -25,9 +25,9 @@ export const Home = () => {
     const code = href.substring(1)?.split("=")[1];
     const localToken = localStorage.getItem('mybirthdayshow');
 
-    if(localToken) {
-      navigate('/birthday-show');
-    }; 
+    // if(localToken) {
+    //   navigate('/birthday-show');
+    // }; 
 
     if(code) {
       const getToken = async(code:string) => {

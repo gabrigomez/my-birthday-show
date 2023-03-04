@@ -21,7 +21,7 @@
     @apply text-xs font-permanent text-green-500
   }
   .song {
-    @apply text-md max-w-[320px] sm:max-w-[450px] h-6 font-permanent truncate
+    @apply text-sm max-w-[320px] sm:max-w-[450px] h-8 font-permanent truncate
   }
 }
 

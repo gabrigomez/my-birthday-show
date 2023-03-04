@@ -37,7 +37,7 @@ export const BirthdayShow = () => {
     window.scrollTo(0, 0);   //prevent cut the final image
 
     html2canvas(document.querySelector("#setlist")!).then((canvas) => {
-      imageToDownload = canvas.toDataURL("image/png", 0.9);      
+      imageToDownload = canvas.toDataURL("image/png", 1);      
       document.body.appendChild(a);
 
       a.href = imageToDownload;
@@ -99,7 +99,7 @@ export const BirthdayShow = () => {
   return (
     <div className='flex flex-col mt-10 items-center'>
       {tracks.length > 0 ? (
-        <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[620px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
+        <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[720px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
           <div className='flex flex-col items-center my-2'>
             <h1 className={`setlist ${backGround === 'bg-happy' ? 'text-white' : ''}`}>
               MY BIRTHDAY SHOW
@@ -111,7 +111,7 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`song ${backGround === 'bg-black' || backGround === 'bg-psychadelic' ? 'text-white' : ''}`} 
+                      className={`song text-lg ${backGround === 'bg-black' || backGround === 'bg-psychadelic' ? 'text-white' : ''}`} 
                       key={track.name}>
                         {track.name.toUpperCase()}
                     </div>
