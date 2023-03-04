@@ -10,6 +10,7 @@ import { TOP_TRACKS_LONG, TOP_TRACKS_MEDIUM, TOP_TRACKS_SHORT } from '../utils/e
 import { MdSaveAlt } from 'react-icons/md';
 import { ImSpinner8 } from 'react-icons/im';
 import { RiLogoutCircleFill } from 'react-icons/ri';
+import { IoMdColorPalette } from 'react-icons/io';
 import SpotifyLogo from '../assets/SpotifyLogo.png';
 
 import html2canvas from 'html2canvas';
@@ -140,15 +141,10 @@ export const BirthdayShow = () => {
               </a>
             </div>
           </div>
-          <div className='flex flex-col items-center mt-4'>
-            <button 
-              className='flex items-center text-white text-sm border-b rounded-full 
-              bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2' 
-              onClick={downloadSetlist}>
+          <div className='flex flex-col items-center mt-2'>
+            <button className='save-button' onClick={downloadSetlist}>
                 <MdSaveAlt className='text-lg mr-1'/>
-                <p>
-                  SAVE
-                </p>
+                <p>SAVE</p>
             </button>
             <div>
               {monthTracks.length > 0 && (            
@@ -166,7 +162,13 @@ export const BirthdayShow = () => {
                   SEMPRE
               </button>              
             </div>
-            <div>
+            <div className='mt-2'>
+              <div className='flex text-xs items-center justify-center font-permanent'>
+                <IoMdColorPalette className='text-xl text-green-500 group-hover:text-green-600 duration-300'/>
+                <p>
+                  TEMAS
+                </p>
+              </div>
               <button className='theme-buttons' onClick={() => setBackground('bg-default')}>
                 Default
               </button>
