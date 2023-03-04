@@ -101,8 +101,14 @@ export const BirthdayShow = () => {
       {tracks.length > 0 ? (
         <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[720px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
           <div className='flex flex-col items-center my-2'>
-            <h1 className={`setlist ${backGround === 'bg-happy' ? 'text-white' : ''}`}>
-              MY BIRTHDAY SHOW
+            <h1 
+              className={`setlist 
+              ${backGround === 'bg-happy' || backGround === 'bg-black' ? 'text-white' : ''} 
+              ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}
+              ${backGround === 'bg-happy' ? 'text-purple-500' : ''}`
+              }
+              >
+                MY BIRTHDAY SHOW
             </h1>
           </div>
           <div>
@@ -111,12 +117,15 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`song text-lg ${backGround === 'bg-black' || backGround === 'bg-psychadelic' ? 'text-white' : ''}`} 
-                      key={track.name}>
+                      className={`song text-lg ${backGround === 'bg-black' ? 'text-white' : ''} ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}`} 
+                      key={track.name}
+                      >
                         {track.name.toUpperCase()}
                     </div>
-                    <div className={`artist ${backGround === 'bg-happy' ? 'text-white' : ''}`}>
-                      {track.artists[0].name}
+                    <div 
+                      className={`artist ${backGround === 'bg-happy' ? 'text-purple-600' : ''} ${backGround === 'bg-psychadelic' ? 'text-white' : ''} `}
+                      >
+                        {track.artists[0].name}
                     </div>
                   </a>
                 )
@@ -172,7 +181,7 @@ export const BirthdayShow = () => {
               </button>
             </div>          
             <button 
-              className='flex mt-10 group' 
+              className='flex mt-4 group' 
               onClick={handleLogout}>
                 <RiLogoutCircleFill className='text-xl text-green-500 group-hover:text-green-600 duration-300' />
                 <p className='font-permanent text-sm'>
