@@ -67,22 +67,20 @@ export const Home = () => {
           E se sua festa de aniversário fosse um show?
         </h3>
       </div>
-      <div>
-        {!haveAccess && (
-          <div className='flex flex-col items-center'>
-            <a 
-              className='flex mt-4 p-2 items-center border rounded-full bg-green-400 hover:bg-green-500 duration-200 group' 
-              href={AUTH_FULL_ENDPOINT}>
-                <SlSocialSpotify className='text-3xl text-white' />
-                <p className='ml-1 group-hover:text-gray-800'>
-                  Login to Spotify
-                </p>
-            </a>
-            <Link className='text-xs mt-2 hover:text-green-500 duration-300' to="/privacy">
-              Termos de uso
-            </Link>
-          </div>
-        )}      
+      <div>        
+        <div className='flex flex-col items-center'>
+          <a 
+            className='flex mt-4 p-2 items-center border rounded-full bg-green-400 hover:bg-green-500 duration-200 group' 
+            href={AUTH_FULL_ENDPOINT}>
+              <SlSocialSpotify className='text-3xl text-white' />
+              <p className='ml-1 group-hover:text-gray-800'>
+                Login to Spotify
+              </p>
+          </a>
+          <Link className='text-xs mt-2 hover:text-green-500 duration-300' to="/privacy">
+            Termos de uso
+          </Link>
+        </div>         
       </div>
       <footer className='flex text-xs text-slate-300 mt-6 group hover:text-slate-400 duration-300'>
         <p>
