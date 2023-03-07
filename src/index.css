@@ -22,7 +22,7 @@
     bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2 
   }
   .artist {
-    @apply text-xs font-permanent text-green-500
+    @apply text-xs font-permanent text-green-500 font-semibold
   }
   .song {
     @apply text-sm max-w-[320px] sm:max-w-[450px] h-8 font-permanent truncate
