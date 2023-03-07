@@ -33,7 +33,7 @@ export const Privacy = () => {
           <p className='text-center text-md mb-4'>
             Dúvidas, sugestões ou reports de bugs são muito bem 
             vindos no <a className='text-green-500' target="blank" href='https://github.com/gabrigomez/my-birthday-show'>
-            repositório oficial do projeto</a> no Github. Será um prazer falar com você! :D
+            repositório oficial do projeto</a> no Github. Será um prazer falar com você! :D            
           </p>
         </div>      
       </div>      

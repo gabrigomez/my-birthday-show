@@ -82,12 +82,16 @@ export const Home = () => {
           </Link>
         </div>         
       </div>
-      <footer className='flex text-xs text-slate-300 mt-6 group hover:text-slate-400 duration-300'>
+      <footer className='flex flex-col items-center text-xs text-slate-400 mt-6 group hover:text-slate-500 duration-300'>
         <p>
-          develop by <a className='group-hover:text-green-400' target="blank" href="https://github.com/gabrigomez"> 
-           gabrigomez - 2023
+          develop by <a className='hover:text-green-400 duration-300' target="blank" href="https://github.com/gabrigomez"> 
+           gabrigomez
           </a>
         </p>
+        <p className='mb-10'>
+          artwork & design by <a className='hover:text-green-400 duration-300' target="blank" href="https://www.instagram.com/rafa_gd_/">rafa_gd</a>
+        </p>
+        <p className='text-slate-300'>2023 - Todos os direitos reservados</p>
       </footer>
     </div>
   )
