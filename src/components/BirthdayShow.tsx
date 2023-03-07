@@ -106,7 +106,7 @@ export const BirthdayShow = () => {
               className={`setlist 
               ${backGround === 'bg-happy' || backGround === 'bg-black' ? 'text-white' : ''} 
               ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}
-              ${backGround === 'bg-happy' ? 'text-purple-500' : ''}`
+              ${backGround === 'bg-happy' ? 'text-blue-500' : ''}`
               }
               >
                 MY BIRTHDAY SHOW
@@ -118,13 +118,15 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`song text-lg ${backGround === 'bg-black' ? 'text-white' : ''} ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}`} 
+                      className={`song text-lg ${backGround === 'bg-black' ? 'text-white' : ''} 
+                      ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}
+                      ${backGround === 'bg-happy' ? 'text-white' : ''}`} 
                       key={track.name}
                       >
                         {track.name.toUpperCase()}
                     </div>
                     <div 
-                      className={`artist ${backGround === 'bg-happy' ? 'text-purple-600' : ''} ${backGround === 'bg-psychadelic' ? 'text-white' : ''} `}
+                      className={`artist ${backGround === 'bg-happy' ? 'text-blue-500' : ''} ${backGround === 'bg-psychadelic' ? 'text-white' : ''} `}
                       >
                         {track.artists[0].name}
                     </div>
@@ -133,7 +135,10 @@ export const BirthdayShow = () => {
               })
             )}
             <div className='flex justify-between mt-1'>
-              <p className={`text-xxs sm:text-sm opacity-70 font-permanent mt-3 ${backGround === 'bg-black' ? 'text-white' : ''}`}>
+              <p className={`text-xxs sm:text-sm opacity-70 font-permanent mt-3 
+              ${backGround === 'bg-black' ? 'text-white' : ''}
+              ${backGround === 'bg-happy' ? 'text-purple-100' : ''}`}
+              >
                 mybirthdayshow.netlify.app
               </p>
               <a href='https://open.spotify.com/?' target="blank" className='mt-1'>
