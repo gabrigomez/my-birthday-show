@@ -7,7 +7,7 @@
 
 @layer components {
   .setlist {
-    @apply text-2xl font-permanent text-green-600
+    @apply text-2xl sm:text-3xl font-permanent text-green-600
   }
   .range-buttons {
     @apply text-xs focus:text-black text-green-500 focus:bg-green-500
@@ -22,10 +22,10 @@
     bg-green-500 hover:bg-green-400 duration-300 mt-4 p-2 
   }
   .artist {
-    @apply text-xs font-permanent text-green-500 font-semibold
+    @apply text-md font-permanent text-green-500 font-semibold
   }
   .song {
-    @apply text-sm max-w-[320px] sm:max-w-[450px] h-8 font-permanent truncate
+    @apply text-sm max-w-[320px] sm:max-w-[450px] h-9 font-permanent truncate
   }
 }
 

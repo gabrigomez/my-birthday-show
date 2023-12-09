@@ -35,7 +35,7 @@ export const BirthdayShow = () => {
   const downloadSetlist = () => {
     const a = document.createElement('a');
     let imageToDownload: string = '';    
-    window.scrollTo(0, 0);   //prevent cut the final image
+    //window.scrollTo(0, 0);   //prevent cut the final image
 
     html2canvas(document.querySelector("#setlist")!).then((canvas) => {
       imageToDownload = canvas.toDataURL("image/png", 1);      
@@ -98,10 +98,10 @@ export const BirthdayShow = () => {
   const onlyAllTracks = (semesterTracks?.length > 0) && (monthTracks?.length > 0) ? false : true;
 
   return (
-    <div className='flex flex-col mt-10 items-center'>
+    <div className='flex flex-col mt-4 items-center'>
       {tracks.length > 0 ? (
         <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[720px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
-          <div className='flex flex-col items-center my-2'>
+          <div className='flex flex-col items-center my-1'>
             <h1 
               className={`setlist 
               ${backGround === 'bg-happy' || backGround === 'bg-black' ? 'text-white' : ''} 
@@ -112,13 +112,13 @@ export const BirthdayShow = () => {
                 MY BIRTHDAY SHOW
             </h1>
           </div>
-          <div>
+          <div className='py-1'>
             {tracks.length > 0 && (
               tracks.map((track) => {
                 return (
-                  <a className='flex flex-col items-center' target="blank" href={track.external_urls.spotify}>
+                  <a className='flex flex-col items-center mb-1' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`song text-lg ${backGround === 'bg-black' ? 'text-white' : ''} 
+                      className={`song text-2xl ${backGround === 'bg-black' ? 'text-white' : ''} 
                       ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}
                       ${backGround === 'bg-happy' ? 'text-white' : ''}`} 
                       key={track.name}
