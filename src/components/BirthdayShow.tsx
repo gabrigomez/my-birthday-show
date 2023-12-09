@@ -103,7 +103,7 @@ export const BirthdayShow = () => {
         <div className={`bg-no-repeat ${backGround} bg-center w-11/12 h-[720px] xs:w-[500px] px-4 mx-1 border-slate-200 border`} id='setlist'>
           <div className='flex flex-col items-center my-1'>
             <h1 
-              className={`setlist 
+              className={`setlist textShadow  
               ${backGround === 'bg-happy' || backGround === 'bg-black' ? 'text-white' : ''} 
               ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}
               ${backGround === 'bg-happy' ? 'text-blue-500' : ''}`
@@ -118,7 +118,8 @@ export const BirthdayShow = () => {
                 return (
                   <a className='flex flex-col items-center mb-1' target="blank" href={track.external_urls.spotify}>
                     <div 
-                      className={`song text-2xl ${backGround === 'bg-black' ? 'text-white' : ''} 
+                      className={`song text-2xl textShadow ${backGround === 'bg-default' ? 'textShadowWhite' : ''}
+                      ${backGround === 'bg-black' ? 'text-white' : ''} 
                       ${backGround === 'bg-psychadelic' ? 'text-lime-300' : ''}
                       ${backGround === 'bg-happy' ? 'text-white' : ''}`} 
                       key={track.name}
@@ -126,7 +127,9 @@ export const BirthdayShow = () => {
                         {track.name.toUpperCase()}
                     </div>
                     <div 
-                      className={`artist ${backGround === 'bg-happy' ? 'text-blue-500' : ''} ${backGround === 'bg-psychadelic' ? 'text-white' : ''} `}
+                      className={`artist 
+                      textShadow ${backGround === 'bg-happy' ? 'text-blue-400' : ''} 
+                      ${backGround === 'bg-psychadelic' ? 'text-white' : ''} `}
                       >
                         {track.artists[0].name}
                     </div>

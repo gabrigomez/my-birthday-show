@@ -42,3 +42,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.textShadow {
+  text-shadow: 1px 1px 1px black;
+}
+
+.textShadowWhite {
+  text-shadow: 1px 1px 1px white;
+}
